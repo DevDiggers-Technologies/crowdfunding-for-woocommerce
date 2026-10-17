@@ -206,6 +206,52 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 						'description' => __( 'Shown on the campaign page and receives the contribution emails. Leave empty for yourself.', 'devdiggers-crowdfunding-for-woocommerce' ),
 						'value'       => $event_id ? (int) get_post_field( 'post_author', $event_id ) : '',
 					],
+					$locked(
+						[
+							'type'           => 'checkbox',
+							'id'             => 'featured',
+							'label'          => __( 'Featured', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'checkbox_label' => __( 'Feature this campaign', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'description'    => __( 'Pin it to featured campaign lists.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'value'          => '',
+						]
+					),
+					$locked(
+						[
+							'type'        => 'select',
+							'id'          => 'category',
+							'label'       => __( 'Category', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'description' => __( 'Group campaigns and let supporters filter by category.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'options'     => [ '' => __( 'No category', 'devdiggers-crowdfunding-for-woocommerce' ) ],
+							'value'       => '',
+						]
+					),
+				],
+			];
+
+			$sections[] = [
+				'column' => 'side',
+				'header' => [ 'heading' => __( 'Payout', 'devdiggers-crowdfunding-for-woocommerce' ) ],
+				'fields' => [
+					$locked(
+						[
+							'type'        => 'textarea',
+							'id'          => 'withdrawal-method',
+							'label'       => __( 'Pay to', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'description' => __( 'Where the organiser wants the money, for example a PayPal email.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'value'       => '',
+						]
+					),
+					$locked(
+						[
+							'type'        => 'select',
+							'id'          => 'fee-type',
+							'label'       => __( 'Platform fee', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'description' => __( 'Override the store fee for this campaign, for example to waive it for a charity.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'options'     => [ '' => __( 'Use store setting', 'devdiggers-crowdfunding-for-woocommerce' ) ],
+							'value'       => '',
+						]
+					),
 				],
 			];
 
