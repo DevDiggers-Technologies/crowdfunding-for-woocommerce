@@ -1,0 +1,1891 @@
+# Copyright (C) 2026 DevDiggers
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: DevDiggers Crowdfunding for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/devdiggers-crowdfunding-for-"
+"woocommerce\n"
+"POT-Creation-Date: 2026-10-17 13:05:59+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: functions.php:97
+#. translators: %1$s: opening link tag, %2$s: closing link tag
+msgid ""
+"DevDiggers Crowdfunding for WooCommerce is activated but not effective. It "
+"requires %1$sWooCommerce%2$s in order to work."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "DevDiggers Crowdfunding for WooCommerce"
+msgstr ""
+
+#: functions.php:135 includes/admin-dashboard.php:83
+msgid "Dashboard"
+msgstr ""
+
+#: functions.php:137 includes/admin-dashboard.php:98
+msgid "Configuration"
+msgstr ""
+
+#: functions.php:139
+msgid "Setup Wizard"
+msgstr ""
+
+#: functions.php:141
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: functions.php:158
+msgid "Support"
+msgstr ""
+
+#: functions.php:159
+msgid "Documentation"
+msgstr ""
+
+#: functions.php:160
+msgid "Review"
+msgstr ""
+
+#: helper/dashboard/dashboard-helper.php:150
+#: templates/admin/orders/orders-list-template.php:216
+msgid "Guest"
+msgstr ""
+
+#: helper/email-helper.php:31
+msgid "Thank You to Supporter"
+msgstr ""
+
+#: helper/email-helper.php:32
+msgid "Sent to the supporter when their contribution is paid."
+msgstr ""
+
+#: helper/email-helper.php:34
+msgid "Thank you for backing {campaign_name}"
+msgstr ""
+
+#: helper/email-helper.php:35
+msgid "Thank you for your support!"
+msgstr ""
+
+#: helper/email-helper.php:36
+msgid ""
+"Hi {supporter_name},\n"
+"\n"
+"Your contribution of {amount} to <strong>{campaign_name}</strong> has been "
+"received. {reward_line}\n"
+"\n"
+"The campaign has now raised {collected_amount}{target_line}. Share it with "
+"friends to help it reach its goal: {campaign_url}"
+msgstr ""
+
+#: helper/email-helper.php:39
+msgid "New Contribution to Organiser"
+msgstr ""
+
+#: helper/email-helper.php:40
+msgid "Sent to the campaign organiser for every paid contribution."
+msgstr ""
+
+#: helper/email-helper.php:42
+msgid "New contribution to {campaign_name}"
+msgstr ""
+
+#: helper/email-helper.php:43
+msgid "You received a new contribution"
+msgstr ""
+
+#: helper/email-helper.php:44
+msgid ""
+"Hi {creator_name},\n"
+"\n"
+"{supporter_name} contributed {amount} to <strong>{campaign_name}</strong>. "
+"{reward_line}\n"
+"\n"
+"{message_line}\n"
+"\n"
+"The campaign has raised {collected_amount}{target_line}."
+msgstr ""
+
+#: helper/email-helper.php:47
+#: templates/admin/configuration/framework-configuration-template.php:287
+msgid "Goal Reached"
+msgstr ""
+
+#: helper/email-helper.php:48
+msgid ""
+"Sent to the organiser, with a copy to the admin, when a campaign reaches "
+"its goal."
+msgstr ""
+
+#: helper/email-helper.php:51
+msgid "{campaign_name} reached its goal!"
+msgstr ""
+
+#: helper/email-helper.php:52
+msgid "Goal reached!"
+msgstr ""
+
+#: helper/email-helper.php:53
+msgid ""
+"Congratulations! <strong>{campaign_name}</strong> reached its goal of "
+"{target_amount} with {collected_amount} raised from {supporters_count} "
+"supporters.\n"
+"\n"
+"See the campaign: {campaign_url}"
+msgstr ""
+
+#: helper/email-helper.php:56
+msgid "Campaign Ended"
+msgstr ""
+
+#: helper/email-helper.php:57
+msgid ""
+"Sent to the organiser, with a copy to the admin, the day after the end date "
+"passes."
+msgstr ""
+
+#: helper/email-helper.php:60
+msgid "{campaign_name} has ended"
+msgstr ""
+
+#: helper/email-helper.php:61
+msgid "Your campaign has ended"
+msgstr ""
+
+#: helper/email-helper.php:62
+msgid ""
+"Hi {creator_name},\n"
+"\n"
+"<strong>{campaign_name}</strong> ended with {collected_amount} "
+"raised{target_line}. Supporters: {supporters_count}.\n"
+"\n"
+"Thank you for raising funds with us!"
+msgstr ""
+
+#: helper/email-helper.php:124
+msgid "A supporter"
+msgstr ""
+
+#: helper/email-helper.php:128
+#. translators: %s: reward title.
+msgid "Reward: %s."
+msgstr ""
+
+#: helper/email-helper.php:130
+#. translators: %s: supporter message.
+msgid "Their message: \"%s\""
+msgstr ""
+
+#: helper/email-helper.php:134
+#. translators: %s: target amount.
+msgid " of its %s goal"
+msgstr ""
+
+#: helper/event-form-helper.php:127
+msgid "You are not allowed to manage this campaign."
+msgstr ""
+
+#: helper/event-form-helper.php:147
+msgid "Please add a name, a contribution amount and a target amount or an end date."
+msgstr ""
+
+#: helper/event-form-helper.php:156
+msgid "A product or campaign with this name already exists."
+msgstr ""
+
+#: helper/event-form-helper.php:177
+msgid "The campaign could not be saved. Please try again."
+msgstr ""
+
+#: helper/event-helper.php:213
+msgid "Pending"
+msgstr ""
+
+#: helper/event-helper.php:214
+msgid "Active"
+msgstr ""
+
+#: helper/event-helper.php:215 templates/front/campaign-card-template.php:98
+msgid "Funded"
+msgstr ""
+
+#: helper/event-helper.php:216
+msgid "Ended"
+msgstr ""
+
+#: helper/event-helper.php:217
+#: templates/admin/events/events-list-template.php:77
+#: templates/admin/events/manage-event-template.php:197
+msgid "Disabled"
+msgstr ""
+
+#: helper/event-helper.php:325 helper/event-helper.php:332
+#: includes/common/common-functions.php:127
+#: includes/front/front-functions.php:442
+#: templates/admin/orders/orders-list-template.php:217
+msgid "Anonymous"
+msgstr ""
+
+#: includes/admin/admin-functions.php:210
+msgid "Campaigns per page"
+msgstr ""
+
+#: includes/admin/admin-functions.php:230
+msgid "Contributions per page"
+msgstr ""
+
+#: includes/admin/admin-functions.php:277
+msgid "Security check failed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:281
+msgid "You are not allowed to manage campaigns."
+msgstr ""
+
+#: includes/admin/admin-functions.php:348
+msgid "Export CSV"
+msgstr ""
+
+#: includes/admin/admin-functions.php:363
+msgid "Crowdfunding Campaign"
+msgstr ""
+
+#: includes/admin/admin-functions.php:393
+msgid "Campaign saved."
+msgstr ""
+
+#: includes/admin/admin-functions.php:394
+msgid "Campaign(s) moved to trash."
+msgstr ""
+
+#: includes/admin/admin-functions.php:395
+msgid "Campaign(s) updated."
+msgstr ""
+
+#: includes/admin/admin-functions.php:409 includes/admin/setup-wizard.php:63
+#: includes/admin-dashboard.php:55 includes/admin-dashboard.php:88
+msgid "Campaigns"
+msgstr ""
+
+#: includes/admin/admin-functions.php:410
+#: templates/admin/events/events-list-template.php:238
+#: templates/admin/events/manage-event-template.php:221
+msgid "Add Campaign"
+msgstr ""
+
+#: includes/admin/admin-functions.php:420
+#: includes/admin/admin-functions.php:443
+msgid "Search"
+msgstr ""
+
+#: includes/admin/admin-functions.php:435 includes/admin/setup-wizard.php:70
+#: includes/admin-dashboard.php:56 includes/admin-dashboard.php:93
+#: templates/admin/dashboard/dashboard-template.php:90
+#: templates/admin/dashboard/dashboard-template.php:119
+#: templates/admin/events/manage-event-template.php:237
+msgid "Contributions"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:53 includes/admin-dashboard.php:74
+#: includes/admin-dashboard.php:75 includes/admin-dashboard.php:76
+#: templates/admin/configuration/framework-configuration-template.php:158
+msgid "Crowdfunding"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:54
+msgid ""
+"Welcome to Crowdfunding for WooCommerce! A few quick steps and your store "
+"is ready to run fundraising campaigns."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:59
+msgid "Welcome"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:64
+msgid "Campaign basics"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:65
+msgid ""
+"Turn crowdfunding on and choose what happens when a campaign reaches its "
+"goal."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:71
+msgid "How do supporters give?"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:72
+msgid ""
+"The button, suggested amounts and supporter options. You can fine tune "
+"everything later."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:77
+msgid "Ready!"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:78
+msgid "Congratulations! Crowdfunding is ready."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:79
+msgid ""
+"Create your first campaign, add [ddwccf_campaigns] to a page, and follow "
+"every contribution from the Dashboard."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:96
+msgid "Welcome to Crowdfunding!"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:97
+msgid ""
+"Launch goal based campaigns with rewards, a live progress card and a "
+"supporters wall, and collect contributions through your normal WooCommerce "
+"checkout."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:131
+#: templates/admin/configuration/framework-configuration-template.php:504
+#: templates/admin/events/events-list-template.php:206
+#: templates/admin/events/manage-event-template.php:194
+msgid "Status"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:132
+#: templates/admin/configuration/framework-configuration-template.php:162
+msgid "Enable Crowdfunding"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:133
+msgid "Show campaigns and accept contributions."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:139
+#: templates/admin/configuration/framework-configuration-template.php:291
+msgid "Close on goal"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:140
+#: templates/admin/configuration/framework-configuration-template.php:291
+msgid "Stop contributions once the goal is reached"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:141
+msgid "Turn off to let campaigns raise more than their goal until the end date."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:159
+#: templates/admin/configuration/framework-configuration-template.php:234
+msgid "Button label"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:160
+msgid "For example \"Back this campaign\" or \"Donate now\"."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:166
+#: templates/front/contribution-form-template.php:102
+msgid "Suggested amounts"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:167
+msgid "Comma separated quick pick amounts, for example 10, 25, 50, 100."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:173
+#: templates/admin/configuration/framework-configuration-template.php:271
+msgid "Anonymous giving"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:174
+#: templates/admin/configuration/framework-configuration-template.php:271
+msgid "Let supporters hide their name from the public list"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:180
+#: templates/admin/configuration/framework-configuration-template.php:272
+msgid "Messages"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:181
+#: templates/admin/configuration/framework-configuration-template.php:272
+msgid "Let supporters leave a public message"
+msgstr ""
+
+#: includes/admin-dashboard.php:54
+msgid "General"
+msgstr ""
+
+#: includes/admin-dashboard.php:57
+#: templates/admin/configuration/framework-configuration-template.php:306
+msgid "Payouts & Fees"
+msgstr ""
+
+#: includes/admin-dashboard.php:58
+msgid "Display"
+msgstr ""
+
+#: includes/admin-dashboard.php:59
+msgid "Emails"
+msgstr ""
+
+#: includes/admin-dashboard.php:60
+#: templates/admin/configuration/framework-configuration-template.php:639
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/admin-dashboard.php:174
+msgid "Copied"
+msgstr ""
+
+#: includes/admin-dashboard.php:199
+#. translators: 1: plugin name, 2: five-star rating link.
+msgid ""
+"Thank you for using %1$s. If you like it, please leave us a %2$s rating. It "
+"means a lot to us!"
+msgstr ""
+
+#: includes/admin-dashboard.php:201
+msgid "five star"
+msgstr ""
+
+#: includes/common/common-functions.php:126
+#: includes/common/common-functions.php:163
+#: includes/front/front-functions.php:434
+#: templates/admin/orders/orders-list-template.php:161
+msgid "Reward"
+msgstr ""
+
+#: includes/common/common-functions.php:128
+#: includes/common/common-functions.php:163
+#: includes/front/front-functions.php:447
+msgid "Message"
+msgstr ""
+
+#: includes/email-notification-handler.php:37
+msgid "Crowdfunding Notification"
+msgstr ""
+
+#: includes/email-notification-handler.php:38
+msgid ""
+"Delivers every Crowdfunding notification. Turn each one on or off under "
+"Crowdfunding > Configuration > Emails."
+msgstr ""
+
+#: includes/email-notification-handler.php:80
+msgid "[{site_title}] Crowdfunding update"
+msgstr ""
+
+#: includes/email-notification-handler.php:89
+msgid "Crowdfunding update"
+msgstr ""
+
+#: includes/file-handler.php:64
+msgid "Back this campaign"
+msgstr ""
+
+#: includes/file-handler.php:79
+msgid "Backed Campaigns"
+msgstr ""
+
+#: includes/front/front-functions.php:131
+msgid "Days"
+msgstr ""
+
+#: includes/front/front-functions.php:132
+msgid "Hours"
+msgstr ""
+
+#: includes/front/front-functions.php:133
+msgid "Mins"
+msgstr ""
+
+#: includes/front/front-functions.php:134
+msgid "Secs"
+msgstr ""
+
+#: includes/front/front-functions.php:135
+msgid "Campaign ended"
+msgstr ""
+
+#: includes/front/front-functions.php:136
+msgid "Copied!"
+msgstr ""
+
+#: includes/front/front-functions.php:255
+#: templates/admin/events/manage-event-template.php:52
+#: templates/admin/events/manage-event-template.php:78
+msgid "Story"
+msgstr ""
+
+#: includes/front/front-functions.php:264
+#. translators: %d: number of rewards.
+msgid "Rewards (%d)"
+msgstr ""
+
+#: includes/front/front-functions.php:275
+#. translators: %d: number of supporters.
+msgid "Supporters (%d)"
+msgstr ""
+
+#: includes/front/front-functions.php:357
+msgid "This campaign is no longer accepting contributions."
+msgstr ""
+
+#: includes/front/front-functions.php:365
+msgid "This reward is no longer available. Please choose another one."
+msgstr ""
+
+#: includes/front/front-functions.php:373
+#. translators: %s: minimum amount.
+msgid "Contribution amount must be at least %s."
+msgstr ""
+
+#: includes/front/front-functions.php:379
+#. translators: %s: maximum amount.
+msgid "Contribution amount cannot be more than %s."
+msgstr ""
+
+#: includes/front/front-functions.php:441
+msgid "Shown as"
+msgstr ""
+
+#: includes/front/front-functions.php:499
+msgid ""
+"Your cart holds a contribution. Complete or remove it before adding other "
+"products."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:159
+msgid "Turn crowdfunding on for your store."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:162
+msgid "Show campaigns and accept contributions"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:162
+msgid ""
+"When off, campaign pages stay visible but nobody can contribute, and the "
+"Backed Campaigns page is hidden."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:163
+msgid "Notification email"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:163
+msgid ""
+"Gets a copy of the Goal Reached and Campaign Ended emails. Leave empty to "
+"use the site admin email."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:168
+msgid "Who Can Start Campaigns"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:169
+msgid ""
+"You run every campaign from this dashboard. Pro also lets customers raise "
+"money for their own causes."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:173
+msgid "Turn your store into a fundraising platform with Pro"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:174
+msgid ""
+"Customers start and run their own campaigns from My Account, and you "
+"approve them and pay them out."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:176
+msgid "Campaign editor in My Account with image upload"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:177
+msgid "Approve new campaigns before they go live"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:178
+msgid "Exclude roles and limit how long campaigns run"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:179
+msgid "Creators see their supporters and request payouts"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:195
+msgid "Campaign Defaults"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:196
+msgid ""
+"Free campaigns are flexible: every contribution counts as soon as it is "
+"paid."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:198
+msgid "Run Kickstarter style campaigns with Pro"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:199
+msgid ""
+"All or nothing funding, stretch goals and updates give supporters a reason "
+"to give more and share again."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:201
+msgid "All or nothing funding with one click refunds when a goal is missed"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:202
+msgid "Stretch goals marked on the progress bar"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:203
+msgid "Campaign updates emailed to every supporter in the background"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:204
+msgid "Unlimited reward tiers (Free has three per campaign)"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:205
+msgid "Campaign categories and featured campaigns"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:229
+msgid "Contribution Form"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:230
+msgid "How supporters choose and pay their contribution on the campaign page."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:234
+msgid ""
+"Text of the contribute button, for example \"Back this campaign\", \"Donate "
+"now\" or \"Pledge\"."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:236
+#. translators: %s: currency symbol.
+msgid "Suggested amounts (%s)"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:236
+msgid ""
+"Comma separated quick pick buttons, for example 10, 25, 50, 100. The first "
+"one is preselected. Amounts below a campaign minimum are hidden."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:240
+#. translators: %s: currency symbol.
+msgid "Maximum contribution (%s)"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:241
+msgid ""
+"Highest amount accepted in one contribution, a simple guard against typos "
+"and fraud. Leave empty for no limit."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:254
+msgid "Payment gateways"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:255
+msgid ""
+"Gateways offered when the cart holds a contribution. Leave empty to allow "
+"every enabled gateway."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:259
+msgid "All enabled gateways"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:267
+msgid "Supporter Options"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:268
+msgid "Small touches that raise conversion and the average contribution."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:271
+msgid "You still see who they are."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:272
+msgid ""
+"Shown on the supporters wall and in the organiser email. Up to 300 "
+"characters."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:277
+msgid "Cover the fee"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:278
+msgid "Offer supporters to add the platform fee on top"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:279
+msgid "Supporters pay the platform fee so the creator receives the full gift."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:288
+msgid "What happens when a campaign hits its goal."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:291
+msgid "Turn off to let campaigns raise more than their goal until their end date."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:307
+msgid "Earn a commission on every campaign and pay creators out from one screen."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:309
+msgid "Earn from every campaign with Pro"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:310
+msgid ""
+"Take a platform fee, let creators request their money once a campaign "
+"closes, and pay them in one click."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:312
+msgid "Platform fee as a percentage or fixed amount"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:313
+msgid "Fee override per campaign, for example to waive it for a charity"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:314
+msgid "Supporters can cover the fee so creators get the full gift"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:315
+msgid "Payout requests you mark as paid or reject"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:316
+msgid "One click payouts into the creator's DevDiggers Wallet"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:331
+msgid "Campaign Page"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:332
+msgid "Social proof and urgency shown on every campaign."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:335
+msgid "Accent color"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:335
+msgid "Used for the progress bar, selected amounts and highlights."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:336
+msgid "Campaign tabs"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:336
+msgid "Show Story, Rewards and Supporters tabs"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:336
+msgid ""
+"Replaces the product tabs on campaign pages. Turn off to keep your theme "
+"tabs."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:337
+msgid "Countdown"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:337
+msgid "Show a live countdown to the end date"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:337
+msgid "Shown on campaigns that have an end date."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:338
+msgid "Supporters wall"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:338
+msgid "List recent supporters and their messages"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:338
+msgid "Shows first name and last initial only. Emails stay private."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:341
+msgid "Supporters to show"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:342
+msgid "How many recent supporters to list, from 1 to 50."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:355
+msgid "Sharing"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:356
+msgid ""
+"Most contributions come from people the creator shares with. Make it one "
+"click."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:360
+msgid "Share buttons"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:360
+msgid "Show share buttons on campaign pages"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:360
+msgid "Opens the network share dialog in a new tab. No tracking scripts are loaded."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:365
+msgid "Networks"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:366
+msgid "Buttons to show, in this order."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:368
+#: templates/front/campaign-card-template.php:150
+msgid "Facebook"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:369
+#: templates/front/campaign-card-template.php:151
+msgid "X"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:370
+#: templates/front/campaign-card-template.php:152
+msgid "WhatsApp"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:371
+#: templates/front/campaign-card-template.php:153
+msgid "LinkedIn"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:372
+#: templates/front/campaign-card-template.php:154
+msgid "Email"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:373
+#: templates/front/campaign-card-template.php:169
+msgid "Copy link"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:382
+msgid "Embed"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:383
+msgid "Let visitors copy an embed code for other websites"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:384
+msgid "Puts a live campaign card on blogs and partner sites."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:392
+msgid "Button shape"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:393
+msgid "Round icons suit most themes. Pick square to match sharp cornered designs."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:395
+msgid "Circle"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:396
+msgid "Rounded square"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:397
+msgid "Square"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:406
+msgid "Button style"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:407
+msgid ""
+"Outline is quiet and neutral, Filled uses your accent color and Brand "
+"colors uses each network's own color."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:409
+msgid "Outline"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:410
+msgid "Filled with accent color"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:411
+msgid "Brand colors"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:420
+msgid "Button size"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:421
+msgid "Larger buttons are easier to tap on phones."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:423
+msgid "Small"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:424
+msgid "Medium"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:425
+msgid "Large"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:434
+msgid "Labels"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:435
+msgid "Show the network name next to each icon"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:436
+msgid "Clearer for visitors who do not recognise every icon, but takes more room."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:444
+msgid "My Account"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:445
+msgid "The page in My Account where supporters follow campaigns they backed."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:448
+msgid "Backed campaigns title"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:448
+msgid "Menu name of the page where supporters follow campaigns they backed."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:449
+msgid "Backed campaigns URL"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:449
+msgid "URL slug of that page."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:450
+msgid "Sidebar widgets"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:450
+msgid "Keep the theme sidebar on this page"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:450
+msgid "Leave off for a wider page."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:455
+msgid "Campaign manager title"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:456
+msgid "The My Account page where customers create and manage their own campaigns."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:457
+msgid "My Campaigns"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:479
+#. translators: %s: link to WooCommerce email settings.
+msgid ""
+"Every notification uses your WooCommerce email design. Change the header "
+"image, colors and footer in %s."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:480
+msgid "WooCommerce > Settings > Emails"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:486
+#: templates/admin/events/manage-event-template.php:205
+msgid "Organiser"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:487
+#: templates/admin/orders/orders-list-template.php:159
+#: templates/front/campaign-card-template.php:100
+msgid "Supporter"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:497
+#. translators: 1: description, 2: recipient.
+msgid "%1$s Recipient: %2$s."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:505
+msgid "Send this email"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:512
+msgid "Subject"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:520
+msgid "Heading"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:528
+msgid "Email Message"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:529
+msgid ""
+"Free sends this wording. Pro gives every email a full editor with "
+"placeholders."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:540
+msgid "More Notifications"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:541
+msgid "Emails for customer campaigns, campaign updates and payouts."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:545
+msgid "Write every email your way with Pro"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:546
+msgid ""
+"A full editor and placeholders for all ten notifications, including six "
+"that only Pro sends."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:548
+msgid "Campaign submitted and campaign approved"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:549
+msgid "Campaign updates to every supporter"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:550
+msgid "Payout requested, paid and rejected"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:551
+msgid "Your own subject, heading and message on every email"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:567
+msgid "Campaigns Grid"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:569
+msgid ""
+"A grid of campaign cards. Campaigns are hidden from the shop, so put this "
+"on a page to give them a home."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:572
+msgid "Campaigns per page."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:573
+msgid "Cards per row, 1 to 6."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:574
+msgid "date, ending, popular, raised or funded."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:575
+msgid "active, funded, ended or all. Combine with commas."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:576
+msgid "Hand picked campaign IDs, comma separated."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:577
+msgid "Show page links when there are more campaigns than the limit. yes or no."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:578
+msgid "Search, category, status and sort filters for visitors."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:579
+msgid "Only campaigns marked as featured."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:580
+msgid "Campaigns of one category."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:581
+msgid "Campaigns of one creator."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:585
+msgid "Single Campaign Card"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:587
+msgid "The progress card of one campaign, for landing pages and blog posts."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:590
+msgid "Campaign ID. Required."
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:604
+msgid "Copy"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:612
+msgid "Attribute"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:613
+msgid "Default"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:614
+msgid "Description"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:628
+msgid "Example:"
+msgstr ""
+
+#: templates/admin/configuration/framework-configuration-template.php:640
+msgid ""
+"Show campaigns anywhere on your site. They work in the block editor "
+"Shortcode block and in page builders."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:85
+#. translators: %s: admin display name.
+msgid "Welcome back, %s!"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:86
+msgid "Money raised, supporters and how every campaign is doing."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:89
+#: templates/admin/dashboard/dashboard-template.php:114
+msgid "Amount Raised"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:91
+#: templates/admin/events/events-list-template.php:204
+msgid "Supporters"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:92
+msgid "Average Contribution"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:94
+msgid "Success Rate"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:105
+msgid "Contributions Trend"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:124
+msgid "No contributions in this period"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:125
+msgid "Paid contributions appear here as soon as supporters back a campaign."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:131
+msgid "Top Campaigns"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:136
+msgid "Campaign Status"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:145
+#: templates/admin/events/events-list-template.php:235
+msgid "No campaigns yet"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:146
+msgid "Create a campaign to see how your campaigns are doing."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:151
+msgid "Recent Contributions"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:156
+msgid "Ending Soon"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:210
+msgid "Turn your store into a fundraising platform"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:211
+msgid ""
+"Pro lets customers run their own campaigns, earns you a fee on every one "
+"and handles payouts and refunds for you."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:213
+msgid "Customer campaigns from My Account, with approval"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:214
+msgid "Platform fees, payout requests and DevDiggers Wallet payouts"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:215
+msgid "All or nothing funding with one click refunds"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:216
+msgid "Stretch goals, campaign updates and unlimited rewards"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:217
+msgid "Needs Attention queue for approvals, payouts and refunds"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:218
+msgid "CSV export of campaigns and contributions"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:232
+msgid "No campaign has raised money yet."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:238
+#. translators: %s: funded percentage.
+msgid "%s%% funded"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:238
+msgid "No goal"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:250
+msgid "No contributions in this period."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:266
+msgid "No live campaign ends in the next 14 days."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:272
+#: templates/admin/events/events-list-template.php:271
+#. translators: %d: number of days.
+#. translators: %d: days left.
+msgid "%d day left"
+msgid_plural "%d days left"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/events/events-list-template.php:75
+msgid "All"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:76
+#: templates/admin/events/manage-event-template.php:196
+msgid "Live"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:202
+#: templates/admin/orders/orders-list-template.php:160
+msgid "Campaign"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:203
+msgid "Raised"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:205
+msgid "End Date"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:236
+msgid "Create your first campaign to start collecting contributions."
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:259
+#. translators: 1: target amount, 2: percentage.
+msgid "of %1$s (%2$s%%)"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:267
+msgid "No end date"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:317
+msgid "Edit"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:318
+msgid "View"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:321
+msgid "Trash"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:326
+#. translators: %s: creator name.
+msgid "by %s"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:329
+#. translators: %d: rewards count.
+msgid "%d reward"
+msgid_plural "%d rewards"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/events/events-list-template.php:348
+msgid "Enable"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:349
+msgid "Disable"
+msgstr ""
+
+#: templates/admin/events/events-list-template.php:350
+msgid "Move to trash"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:53
+msgid "What supporters see on the campaign page."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:61
+msgid "Campaign name"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:70
+msgid "Short summary"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:71
+msgid "One or two sentences shown on campaign cards and the campaign page."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:79
+msgid ""
+"Why the campaign matters, how the money will be used and who it helps. "
+"Shown in the Story tab."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:87
+msgid "Cover image"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:94
+msgid "Funding"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:95
+msgid ""
+"Set a goal, an end date, or both. Every paid contribution counts toward the "
+"goal."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:102
+msgid "Funding model"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:103
+msgid ""
+"Flexible keeps whatever is raised. All or nothing only releases the money "
+"if the goal is met by the end date, otherwise every supporter is refunded."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:105
+msgid "Flexible (keep what you raise)"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:106
+msgid "All or nothing"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:115
+#: templates/front/contribution-form-template.php:124
+msgid "Contribution"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:116
+msgid ""
+"Let supporters choose any amount above a minimum, or charge everyone the "
+"same fixed amount."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:118
+msgid "Supporters choose the amount"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:119
+msgid "Fixed amount"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:128
+#. translators: %s: currency symbol.
+msgid "Fixed or minimum amount (%s)"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:129
+msgid ""
+"The fixed price, or the smallest contribution accepted. Use 0 for no "
+"minimum."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:141
+#. translators: %s: currency symbol.
+msgid "Goal (%s)"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:142
+msgid ""
+"Shown on the progress bar. Leave empty for an open ended campaign with an "
+"end date."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:153
+msgid "End date"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:154
+msgid "Contributions close at the end of this day, in the store time zone."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:161
+msgid "Rewards"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:163
+#. translators: %d: number of reward tiers.
+msgid ""
+"Optional perks for supporters who give at least a set amount. Limited "
+"rewards sell out automatically. Up to %d tiers per campaign."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:169
+msgid "Stretch Goals & Updates"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:170
+msgid "Keep supporters coming back after they give."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:174
+msgid "Give supporters a reason to give again with Pro"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:175
+msgid ""
+"Show what extra money unlocks and post news that lands in every supporter's "
+"inbox."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:177
+msgid "Stretch goals marked on the progress bar and listed on the campaign"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:178
+msgid "Updates timeline in an Updates tab on the campaign page"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:179
+msgid "Updates emailed to every supporter in the background"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:180
+msgid "Unlimited reward tiers"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:188
+msgid "Publish"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:206
+msgid ""
+"Shown on the campaign page and receives the contribution emails. Leave "
+"empty for yourself."
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:217
+msgid "Save Campaign"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:221
+msgid "Edit Campaign"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:224
+#. translators: 1: raised amount, 2: supporters.
+msgid "%1$s raised from %2$s supporters"
+msgstr ""
+
+#: templates/admin/events/manage-event-template.php:231
+msgid "View Campaign"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:131
+#: templates/admin/orders/orders-list-template.php:132
+msgid "All campaigns"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:137
+#: templates/admin/orders/orders-list-template.php:138
+msgid "Paid and unpaid"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:139
+msgid "Counted toward goal"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:140
+#: templates/admin/orders/orders-list-template.php:237
+msgid "Not counted"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:142
+msgid "Filter"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:144
+msgid "Reset"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:162
+msgid "Amount"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:163
+msgid "Order Status"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:164
+#: templates/admin/orders/orders-list-template.php:237
+msgid "Counted"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:165
+msgid "Date"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:187
+msgid "No contributions yet"
+msgstr ""
+
+#: templates/admin/orders/orders-list-template.php:188
+msgid "Paid contributions show up here as soon as supporters back a campaign."
+msgstr ""
+
+#: templates/common/repeater-template.php:35
+msgid "New reward"
+msgstr ""
+
+#: templates/common/repeater-template.php:40
+#. translators: %d: claimed count.
+msgid "%d backer chose this reward"
+msgid_plural "%d backers chose this reward"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/common/repeater-template.php:44
+msgid "Remove reward"
+msgstr ""
+
+#: templates/common/repeater-template.php:47
+msgid "Title"
+msgstr ""
+
+#: templates/common/repeater-template.php:47
+msgid "Early bird"
+msgstr ""
+
+#: templates/common/repeater-template.php:52
+#. translators: %s: currency symbol.
+msgid "Minimum amount (%s)"
+msgstr ""
+
+#: templates/common/repeater-template.php:57
+msgid "Quantity limit"
+msgstr ""
+
+#: templates/common/repeater-template.php:57
+msgid "Unlimited"
+msgstr ""
+
+#: templates/common/repeater-template.php:58
+msgid "Estimated delivery"
+msgstr ""
+
+#: templates/common/repeater-template.php:58
+msgid "March 2027"
+msgstr ""
+
+#: templates/common/repeater-template.php:59
+msgid "What supporters get"
+msgstr ""
+
+#: templates/common/repeater-template.php:66
+msgid "Add reward"
+msgstr ""
+
+#: templates/common/repeater-template.php:104
+#. translators: %d: number of reward tiers.
+msgid "Free campaigns offer up to %d reward tiers."
+msgstr ""
+
+#: templates/common/repeater-template.php:106
+msgid "Get unlimited rewards with Pro"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:34
+msgid "Funding progress"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:86
+#. translators: %s: target amount.
+msgid "raised of %s goal"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:88
+msgid "raised so far"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:102
+msgid "Day left"
+msgid_plural "Days left"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/front/campaign-card-template.php:116
+#. translators: %s: creator name.
+msgid "Organised by %s"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:126
+msgid "This campaign is waiting for approval."
+msgstr ""
+
+#: templates/front/campaign-card-template.php:128
+msgid ""
+"This campaign is no longer accepting contributions. Thank you to everyone "
+"who supported it!"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:133
+msgid "View campaign"
+msgstr ""
+
+#: templates/front/campaign-card-template.php:161
+msgid "Share this campaign"
+msgstr ""
+
+#: templates/front/campaign-tabs-template.php:41
+#. translators: %d: number of backers.
+msgid "%d backer"
+msgid_plural "%d backers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/front/campaign-tabs-template.php:50
+#. translators: %d: rewards left.
+msgid "Limited: %d left"
+msgstr ""
+
+#: templates/front/campaign-tabs-template.php:51
+#: templates/front/contribution-form-template.php:88
+msgid "Sold out"
+msgstr ""
+
+#: templates/front/campaign-tabs-template.php:60
+#: templates/front/contribution-form-template.php:77
+#. translators: %s: estimated delivery.
+msgid "Estimated delivery: %s"
+msgstr ""
+
+#: templates/front/campaign-tabs-template.php:118
+msgid "Recent supporters"
+msgstr ""
+
+#: templates/front/campaign-tabs-template.php:132
+#. translators: %s: human time difference.
+msgid "%s ago"
+msgstr ""
+
+#: templates/front/campaigns-grid-template.php:85
+msgid "No campaigns found"
+msgstr ""
+
+#: templates/front/campaigns-grid-template.php:86
+msgid "Check back soon for new campaigns."
+msgstr ""
+
+#: templates/front/campaigns-grid-template.php:99
+msgid "Campaigns pages"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:48
+msgid "Choose a reward"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:52
+msgid "No reward, I just want to help"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:65
+#. translators: %s: amount.
+msgid "%s or more"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:87
+#. translators: 1: left, 2: limit.
+msgid "%1$d of %2$d left"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:109
+msgid "Your contribution"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:119
+#. translators: %s: minimum amount.
+msgid "Minimum contribution: %s"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:130
+msgid "Hide my name from the public supporters list"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:136
+msgid "Leave a message (optional)"
+msgstr ""
+
+#: templates/front/contribution-form-template.php:137
+msgid "Words of support for the campaign"
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:48
+msgid "Campaigns you supported, your rewards and how each campaign is doing."
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:54
+msgid "You have not backed a campaign yet"
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:55
+msgid ""
+"When you support a campaign, it shows up here so you can follow its "
+"progress."
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:79
+#. translators: %s: amount.
+msgid "You gave %s"
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:86
+#. translators: %s: reward title.
+msgid "Reward: %s"
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:107
+msgid "Previous"
+msgstr ""
+
+#: templates/front/myaccount/backed-list-template.php:110
+msgid "Next"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://devdiggers.com/product/woocommerce-crowdfunding/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Run donation and crowdfunding campaigns in WooCommerce. Goals, end dates, "
+"reward tiers, a live progress card, a supporters wall and share buttons, "
+"paid through your normal checkout."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "DevDiggers"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://devdiggers.com/"
+msgstr ""
