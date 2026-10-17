@@ -183,9 +183,19 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 				],
 			];
 
+			if ( $event_id ) {
+				$sections[] = [
+					'column'            => 'side',
+					'after_header_html' => $this->get_progress_html( $data ),
+				];
+			}
+
 			$sections[] = [
 				'column' => 'side',
-				'header' => [ 'heading' => __( 'Publish', 'devdiggers-crowdfunding-for-woocommerce' ) ],
+				'header' => [
+					'heading'     => __( 'Publish', 'devdiggers-crowdfunding-for-woocommerce' ),
+					'description' => $event_id ? DDWCCF_Event_Helper::get_badge( DDWCCF_Event_Helper::get_state( $event_id, $data ) ) : '',
+				],
 				'fields' => [
 					[
 						'type'    => 'select',
@@ -265,13 +275,7 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 				'ddwccf-manage-event',
 				[
 					'heading'         => $event_id ? __( 'Edit Campaign', 'devdiggers-crowdfunding-for-woocommerce' ) : __( 'Add Campaign', 'devdiggers-crowdfunding-for-woocommerce' ),
-					'description'     => $event_id ? wp_kses_post( DDWCCF_Event_Helper::get_badge( DDWCCF_Event_Helper::get_state( $event_id, $data ) ) ) . ' ' . sprintf(
-						/* translators: 1: raised amount, 2: supporters. */
-						esc_html__( '%1$s raised from %2$s supporters', 'devdiggers-crowdfunding-for-woocommerce' ),
-						wp_kses_post( wc_price( $data['collected_amount'] ) ),
-						esc_html( number_format_i18n( count( $data['contributors'] ) ) )
-					) : '',
-					'back_button_url' => admin_url( 'admin.php?page=' . DDWCCF_DASHBOARD_PAGE . '&menu=events' ),
+										'back_button_url' => admin_url( 'admin.php?page=' . DDWCCF_DASHBOARD_PAGE . '&menu=events' ),
 					'header_buttons'  => $event_id ? [
 						[
 							'label'  => __( 'View Campaign', 'devdiggers-crowdfunding-for-woocommerce' ),
@@ -286,6 +290,53 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 					] : [],
 				]
 			);
+		}
+		/**
+		 * Funding snapshot card for the editor rail.
+		 *
+		 * @param array $data Campaign data.
+		 * @return string
+		 */
+		protected function get_progress_html( $data ) {
+			$raised     = (float) $data['collected_amount'];
+			$goal       = (float) $data['target_amount'];
+			$progress   = DDWCCF_Event_Helper::get_progress( $data );
+			$supporters = count( $data['contributors'] );
+			$days_left  = DDWCCF_Event_Helper::get_days_left( $data );
+
+			$stats = [
+				[ __( 'Supporters', 'devdiggers-crowdfunding-for-woocommerce' ), number_format_i18n( $supporters ) ],
+				[ __( 'Average', 'devdiggers-crowdfunding-for-woocommerce' ), $supporters ? wc_price( $raised / $supporters ) : '&mdash;' ],
+				[ __( 'Days left', 'devdiggers-crowdfunding-for-woocommerce' ), null === $days_left ? '&infin;' : number_format_i18n( $days_left ) ],
+			];
+
+			ob_start();
+			?>
+			<div class="ddfw-fields-section ddwccf-funding-card<?php echo $goal && $raised >= $goal ? ' ddwccf-funding-card--funded' : ''; ?>">
+				<span class="ddwccf-funding-card__eyebrow"><?php esc_html_e( 'Raised so far', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
+				<strong class="ddwccf-funding-card__amount"><?php echo wp_kses_post( wc_price( $raised ) ); ?></strong>
+				<?php if ( $goal ) : ?>
+					<div class="ddwccf-funding-card__bar"><span style="width: <?php echo esc_attr( min( 100, $progress ) ); ?>%"></span></div>
+					<div class="ddwccf-funding-card__goal">
+						<span><b><?php echo esc_html( $progress ); ?>%</b> <?php esc_html_e( 'funded', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
+						<span>
+							<?php
+							/* translators: %s: goal amount. */
+							printf( esc_html__( 'of %s goal', 'devdiggers-crowdfunding-for-woocommerce' ), wp_kses_post( wc_price( $goal ) ) );
+							?>
+						</span>
+					</div>
+				<?php else : ?>
+					<div class="ddwccf-funding-card__goal"><span><?php esc_html_e( 'No goal set. Every contribution counts.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span></div>
+				<?php endif; ?>
+				<div class="ddwccf-funding-card__stats">
+					<?php foreach ( $stats as $stat ) : ?>
+						<div><b><?php echo wp_kses_post( $stat[1] ); ?></b><span><?php echo esc_html( $stat[0] ); ?></span></div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<?php
+			return ob_get_clean();
 		}
 	}
 }
