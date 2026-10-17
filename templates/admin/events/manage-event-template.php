@@ -187,18 +187,17 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 				$sections[] = [
 					'column'            => 'side',
 					'class'             => 'ddwccf-funding-box',
-					'header'            => [ 'heading' => __( 'Funding', 'devdiggers-crowdfunding-for-woocommerce' ) ],
+					'header'            => [
+						'heading'     => __( 'Funding', 'devdiggers-crowdfunding-for-woocommerce' ),
+						'description' => DDWCCF_Event_Helper::get_badge( DDWCCF_Event_Helper::get_state( $event_id, $data ) ),
+					],
 					'after_header_html' => $this->get_progress_html( $data ),
 				];
 			}
 
 			$sections[] = [
 				'column' => 'side',
-				'class'  => 'ddwccf-publish-box',
-				'header' => [
-					'heading'     => __( 'Publish', 'devdiggers-crowdfunding-for-woocommerce' ),
-					'description' => $event_id ? DDWCCF_Event_Helper::get_badge( DDWCCF_Event_Helper::get_state( $event_id, $data ) ) : '',
-				],
+				'header' => [ 'heading' => __( 'Publish', 'devdiggers-crowdfunding-for-woocommerce' ) ],
 				'fields' => [
 					[
 						'type'    => 'select',
