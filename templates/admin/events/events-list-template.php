@@ -230,6 +230,17 @@ if ( ! class_exists( 'DDWCCF_Events_List_Template' ) ) {
 		 * @return void
 		 */
 		public function no_items() {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list search.
+			if ( ! empty( $_GET['s'] ) ) {
+				ddfw_print_empty_state(
+					[
+						'title'       => __( 'No campaigns found', 'devdiggers-crowdfunding-for-woocommerce' ),
+						'description' => __( 'No campaign matches your search. Try another name.', 'devdiggers-crowdfunding-for-woocommerce' ),
+					]
+				);
+				return;
+			}
+
 			ddfw_print_empty_state(
 				[
 					'title'       => __( 'No campaigns yet', 'devdiggers-crowdfunding-for-woocommerce' ),
