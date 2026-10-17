@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/devdiggers-crowdfunding-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2026-10-17 13:22:07+00:00\n"
+"POT-Creation-Date: 2026-10-17 13:26:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -234,7 +234,7 @@ msgstr ""
 
 #: helper/event-helper.php:217
 #: templates/admin/events/events-list-template.php:77
-#: templates/admin/events/manage-event-template.php:207
+#: templates/admin/events/manage-event-template.php:210
 msgid "Disabled"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 
 #: includes/admin/admin-functions.php:410
 #: templates/admin/events/events-list-template.php:249
-#: templates/admin/events/manage-event-template.php:277
+#: templates/admin/events/manage-event-template.php:280
 msgid "Add Campaign"
 msgstr ""
 
@@ -301,7 +301,7 @@ msgstr ""
 #: includes/admin-dashboard.php:56 includes/admin-dashboard.php:93
 #: templates/admin/dashboard/dashboard-template.php:90
 #: templates/admin/dashboard/dashboard-template.php:119
-#: templates/admin/events/manage-event-template.php:287
+#: templates/admin/events/manage-event-template.php:290
 msgid "Contributions"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgstr ""
 #: includes/admin/setup-wizard.php:131
 #: templates/admin/configuration/framework-configuration-template.php:504
 #: templates/admin/events/events-list-template.php:206
-#: templates/admin/events/manage-event-template.php:204
+#: templates/admin/events/manage-event-template.php:207
 msgid "Status"
 msgstr ""
 
@@ -1068,7 +1068,7 @@ msgid "WooCommerce > Settings > Emails"
 msgstr ""
 
 #: templates/admin/configuration/framework-configuration-template.php:486
-#: templates/admin/events/manage-event-template.php:215
+#: templates/admin/events/manage-event-template.php:218
 msgid "Organiser"
 msgstr ""
 
@@ -1243,7 +1243,7 @@ msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:91
 #: templates/admin/events/events-list-template.php:204
-#: templates/admin/events/manage-event-template.php:308
+#: templates/admin/events/manage-event-template.php:311
 msgid "Supporters"
 msgstr ""
 
@@ -1361,7 +1361,7 @@ msgid "All"
 msgstr ""
 
 #: templates/admin/events/events-list-template.php:76
-#: templates/admin/events/manage-event-template.php:206
+#: templates/admin/events/manage-event-template.php:209
 msgid "Live"
 msgstr ""
 
@@ -1463,6 +1463,7 @@ msgid "Cover image"
 msgstr ""
 
 #: templates/admin/events/manage-event-template.php:94
+#: templates/admin/events/manage-event-template.php:190
 msgid "Funding"
 msgstr ""
 
@@ -1584,101 +1585,95 @@ msgstr ""
 msgid "Unlimited reward tiers"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:196
+#: templates/admin/events/manage-event-template.php:199
 msgid "Publish"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:216
+#: templates/admin/events/manage-event-template.php:219
 msgid ""
 "Shown on the campaign page and receives the contribution emails. Leave "
 "empty for yourself."
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:223
+#: templates/admin/events/manage-event-template.php:226
 msgid "Featured"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:224
+#: templates/admin/events/manage-event-template.php:227
 msgid "Feature this campaign"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:225
+#: templates/admin/events/manage-event-template.php:228
 msgid "Pin it to featured campaign lists."
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:233
+#: templates/admin/events/manage-event-template.php:236
 msgid "Category"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:234
+#: templates/admin/events/manage-event-template.php:237
 msgid "Group campaigns and let supporters filter by category."
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:235
+#: templates/admin/events/manage-event-template.php:238
 msgid "No category"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:244
+#: templates/admin/events/manage-event-template.php:247
 msgid "Payout"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:250
+#: templates/admin/events/manage-event-template.php:253
 msgid "Pay to"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:251
+#: templates/admin/events/manage-event-template.php:254
 msgid "Where the organiser wants the money, for example a PayPal email."
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:259
+#: templates/admin/events/manage-event-template.php:262
 msgid "Platform fee"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:260
+#: templates/admin/events/manage-event-template.php:263
 msgid ""
 "Override the store fee for this campaign, for example to waive it for a "
 "charity."
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:261
+#: templates/admin/events/manage-event-template.php:264
 msgid "Use store setting"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:273
+#: templates/admin/events/manage-event-template.php:276
 msgid "Save Campaign"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:277
+#: templates/admin/events/manage-event-template.php:280
 msgid "Edit Campaign"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:281
+#: templates/admin/events/manage-event-template.php:284
 msgid "View Campaign"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:309
+#: templates/admin/events/manage-event-template.php:312
 msgid "Average"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:310
+#: templates/admin/events/manage-event-template.php:313
 msgid "Days left"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:316
-msgid "Raised so far"
-msgstr ""
-
-#: templates/admin/events/manage-event-template.php:321
-msgid "funded"
-msgstr ""
-
-#: templates/admin/events/manage-event-template.php:325
+#: templates/admin/events/manage-event-template.php:329
+#: templates/front/campaign-card-template.php:86
 #. translators: %s: goal amount.
-msgid "of %s goal"
+#. translators: %s: target amount.
+msgid "raised of %s goal"
 msgstr ""
 
-#: templates/admin/events/manage-event-template.php:330
-msgid "No goal set. Every contribution counts."
+#: templates/admin/events/manage-event-template.php:334
+msgid "raised, no goal set"
 msgstr ""
 
 #: templates/admin/orders/orders-list-template.php:131
@@ -1796,11 +1791,6 @@ msgstr ""
 
 #: templates/front/campaign-card-template.php:34
 msgid "Funding progress"
-msgstr ""
-
-#: templates/front/campaign-card-template.php:86
-#. translators: %s: target amount.
-msgid "raised of %s goal"
 msgstr ""
 
 #: templates/front/campaign-card-template.php:88

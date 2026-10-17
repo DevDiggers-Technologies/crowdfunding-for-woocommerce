@@ -186,12 +186,15 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 			if ( $event_id ) {
 				$sections[] = [
 					'column'            => 'side',
+					'class'             => 'ddwccf-funding-box',
+					'header'            => [ 'heading' => __( 'Funding', 'devdiggers-crowdfunding-for-woocommerce' ) ],
 					'after_header_html' => $this->get_progress_html( $data ),
 				];
 			}
 
 			$sections[] = [
 				'column' => 'side',
+				'class'  => 'ddwccf-publish-box',
 				'header' => [
 					'heading'     => __( 'Publish', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'description' => $event_id ? DDWCCF_Event_Helper::get_badge( DDWCCF_Event_Helper::get_state( $event_id, $data ) ) : '',
@@ -312,28 +315,29 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 
 			ob_start();
 			?>
-			<div class="ddfw-fields-section ddwccf-funding-card<?php echo $goal && $raised >= $goal ? ' ddwccf-funding-card--funded' : ''; ?>">
-				<span class="ddwccf-funding-card__eyebrow"><?php esc_html_e( 'Raised so far', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
-				<strong class="ddwccf-funding-card__amount"><?php echo wp_kses_post( wc_price( $raised ) ); ?></strong>
-				<?php if ( $goal ) : ?>
-					<div class="ddwccf-funding-card__bar"><span style="width: <?php echo esc_attr( min( 100, $progress ) ); ?>%"></span></div>
-					<div class="ddwccf-funding-card__goal">
-						<span><b><?php echo esc_html( $progress ); ?>%</b> <?php esc_html_e( 'funded', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
-						<span>
-							<?php
-							/* translators: %s: goal amount. */
-							printf( esc_html__( 'of %s goal', 'devdiggers-crowdfunding-for-woocommerce' ), wp_kses_post( wc_price( $goal ) ) );
-							?>
-						</span>
-					</div>
-				<?php else : ?>
-					<div class="ddwccf-funding-card__goal"><span><?php esc_html_e( 'No goal set. Every contribution counts.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span></div>
-				<?php endif; ?>
-				<div class="ddwccf-funding-card__stats">
-					<?php foreach ( $stats as $stat ) : ?>
-						<div><b><?php echo wp_kses_post( $stat[1] ); ?></b><span><?php echo esc_html( $stat[0] ); ?></span></div>
-					<?php endforeach; ?>
+			<div class="ddwccf-funding<?php echo $goal && $raised >= $goal ? ' ddwccf-funding--reached' : ''; ?>">
+				<div class="ddwccf-funding__head">
+					<strong class="ddwccf-funding__amount"><?php echo wp_kses_post( wc_price( $raised ) ); ?></strong>
+					<?php if ( $goal ) : ?>
+						<span class="ddwccf-funding__percent"><?php echo esc_html( $progress ); ?>%</span>
+					<?php endif; ?>
 				</div>
+				<?php if ( $goal ) : ?>
+					<p class="ddwccf-funding__goal">
+						<?php
+						/* translators: %s: goal amount. */
+						printf( esc_html__( 'raised of %s goal', 'devdiggers-crowdfunding-for-woocommerce' ), wp_kses_post( wc_price( $goal ) ) );
+						?>
+					</p>
+					<div class="ddwccf-progress"><span style="width: <?php echo esc_attr( min( 100, $progress ) ); ?>%"></span></div>
+				<?php else : ?>
+					<p class="ddwccf-funding__goal"><?php esc_html_e( 'raised, no goal set', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
+				<?php endif; ?>
+				<dl class="ddwccf-funding__stats">
+					<?php foreach ( $stats as $stat ) : ?>
+						<div><dt><?php echo esc_html( $stat[0] ); ?></dt><dd><?php echo wp_kses_post( $stat[1] ); ?></dd></div>
+					<?php endforeach; ?>
+				</dl>
 			</div>
 			<?php
 			return ob_get_clean();

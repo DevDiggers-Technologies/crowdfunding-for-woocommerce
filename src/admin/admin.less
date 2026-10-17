@@ -137,62 +137,44 @@
 	.ddwccf-dash-item__value { color: #111827; flex-shrink: 0; font-size: 13px; font-weight: 600; }
 }
 
-// Funding snapshot on the campaign editor rail.
-.ddwccf-funding-card {
-	background: linear-gradient(145deg, #0256ff 0%, #4f46e5 100%);
-	border: 0;
-	color: #fff;
-	overflow: hidden;
-	padding: 24px;
-	position: relative;
-
-	&::after {
-		background: rgba(255, 255, 255, 0.08);
-		border-radius: 50%;
-		content: '';
-		height: 180px;
-		position: absolute;
-		right: -60px;
-		top: -70px;
-		width: 180px;
-	}
-
-	&--funded { background: linear-gradient(145deg, #059669 0%, #0d9488 100%); }
-}
-
-.ddwccf-funding-card__eyebrow { font-size: 12px; letter-spacing: 0.06em; opacity: 0.8; text-transform: uppercase; }
-.ddwccf-funding-card__amount { display: block; font-size: 32px; font-weight: 700; line-height: 1.2; margin: 4px 0 16px; }
-.ddwccf-funding-card .amount, .ddwccf-funding-card bdi, .ddwccf-funding-card .woocommerce-Price-currencySymbol { color: inherit; font-size: inherit; font-weight: inherit; }
-
-.ddwccf-funding-card__bar {
-	background: rgba(255, 255, 255, 0.25);
-	border-radius: 999px;
-	height: 8px;
-	overflow: hidden;
-
-	span { background: #fff; border-radius: 999px; display: block; height: 100%; min-width: 8px; }
-}
-
-.ddwccf-funding-card__goal {
+// Campaign editor rail: badge beside the Publish heading.
+.ddwccf-publish-box .ddfw-fields-section-header {
+	align-items: center;
 	display: flex;
-	flex-wrap: wrap;
-	font-size: 13px;
-	gap: 4px;
+	gap: 12px;
 	justify-content: space-between;
-	margin-top: 8px;
-	opacity: 0.9;
+
+	h3, p { margin: 0; }
 }
 
-.ddwccf-funding-card__stats {
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	display: grid;
-	gap: 8px;
-	grid-template-columns: repeat(3, 1fr);
-	margin-top: 18px;
-	padding-top: 16px;
-	position: relative;
+// Campaign editor rail: funding summary.
+.ddwccf-funding {
+	.amount, bdi, .woocommerce-Price-currencySymbol { color: inherit; font-size: inherit; font-weight: inherit; }
 
-	div { display: flex; flex-direction: column; gap: 2px; }
-	b { font-size: 16px; }
-	span { font-size: 11px; opacity: 0.75; text-transform: uppercase; }
+	.ddwccf-progress { height: 8px; margin-top: 12px; max-width: none; }
+	&--reached .ddwccf-progress span { background: #15803d; }
+}
+
+.ddwccf-funding__head {
+	align-items: baseline;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ddwccf-funding__amount { color: #111827; font-size: 26px; font-weight: 600; line-height: 1.2; }
+.ddwccf-funding__percent { color: @primary; font-size: 14px; font-weight: 600; }
+.ddwccf-funding--reached .ddwccf-funding__percent { color: #15803d; }
+.ddwccf-funding__goal { color: #6b7280; font-size: 13px; margin: 4px 0 0; }
+
+.ddwccf-funding__stats {
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 16px 0 0;
+
+	div { padding: 10px 12px; }
+	div + div { border-left: 1px solid #e5e7eb; }
+	dt { color: #6b7280; font-size: 12px; }
+	dd { color: #111827; font-size: 15px; font-weight: 600; margin: 2px 0 0; }
 }
