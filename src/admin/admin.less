@@ -1,0 +1,203 @@
+@import '../common/status.less';
+@import '../common/repeater.less';
+
+@primary: var(--ddfw-primary-color, #0256ff);
+
+.ddwccf-progress {
+	background: #e5e7eb;
+	border-radius: 999px;
+	height: 6px;
+	margin-top: 6px;
+	max-width: 160px;
+	overflow: hidden;
+
+	span { background: @primary; display: block; height: 100%; }
+}
+
+.ddwccf-item-cell {
+	align-items: flex-start;
+	display: flex;
+	gap: 12px;
+
+	img { border-radius: 8px; flex-shrink: 0; height: 48px; object-fit: cover; width: 48px; }
+	.row-actions { margin-top: 2px; }
+}
+
+.ddwccf-item-cell__meta { color: #6b7280; font-size: 12px; margin-top: 2px; }
+.ddwccf-quote { color: #4b5563; display: block; margin-top: 4px; }
+
+.ddwccf-person-cell {
+	align-items: flex-start;
+	display: flex;
+	gap: 10px;
+
+	img { border-radius: 50%; flex-shrink: 0; }
+	.ddwccf-status { margin-left: 6px; vertical-align: middle; }
+}
+
+.wp-list-table {
+	.column-event_name { width: 34%; }
+	.column-supporters { width: 90px; }
+	.column-status .button { margin-top: 6px; }
+}
+
+// WooCommerce order status colours (WooCommerce admin CSS is not loaded on plugin screens).
+.devdiggers-wrap mark.order-status {
+	background: #e5e5e5;
+	border-radius: 4px;
+	color: #454545;
+	display: inline-flex;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1;
+	white-space: nowrap;
+
+	span { padding: 5px 8px; }
+
+	&.status-processing { background: #c6e1c6; color: #2c4700; }
+	&.status-on-hold { background: #f8dda7; color: #573b00; }
+	&.status-completed { background: #c8d7e1; color: #003d66; }
+	&.status-cancelled,
+	&.status-failed,
+	&.status-refunded { background: #eba3a3; color: #570000; }
+}
+
+// Disabled Pro action next to the page title. The PRO tag is absolutely positioned.
+.ddwccf-locked-action { display: inline-block; position: relative; vertical-align: top; }
+
+// Shortcode reference cards (same layout as the DevDiggers PWA plugin).
+.ddwccf-shortcodes { display: flex; flex-direction: column; gap: 16px; }
+
+.ddwccf-shortcode-card {
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 18px 20px;
+
+	> p { color: #4b5563; font-size: 13px; line-height: 1.6; margin: 10px 0 14px; }
+	.ddfw-table code { font-size: 12px; }
+	.ddfw-table th:first-child,
+	.ddfw-table td:first-child { width: 22%; }
+	.ddfw-table th:nth-child(2),
+	.ddfw-table td:nth-child(2) { width: 14%; }
+}
+
+.ddwccf-shortcode-card__head {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: space-between;
+
+	h3 { color: #111827; font-size: 15px; margin: 0; }
+}
+
+.ddwccf-shortcode-card__copy { align-items: center; display: flex; gap: 8px; }
+
+.ddwccf-shortcode-card__copy code,
+.ddwccf-shortcode-card__example code {
+	background: var(--ddfw-tab-background-color, #eef3ff);
+	border-radius: 6px;
+	color: var(--ddfw-primary-color, #0256ff);
+	font-size: 13px;
+	padding: 4px 10px;
+}
+
+.ddwccf-shortcode-card__example { margin: 14px 0 0 !important; span { color: #6b7280; } }
+
+.ddwccf-help-card {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	margin-bottom: 16px;
+	padding: 4px 16px;
+
+	code { font-size: 11px; margin: 2px; }
+}
+
+// Dashboard widget bodies (the shell comes from the framework).
+.ddfw-dash {
+	.ddwccf-dash-item {
+		align-items: center;
+		border-bottom: 1px solid #f3f4f6;
+		color: inherit;
+		display: flex;
+		gap: 12px;
+		justify-content: space-between;
+		padding: 12px 0;
+		text-decoration: none;
+
+		&:last-child { border-bottom: 0; }
+		&:hover strong { color: @primary; }
+	}
+
+	.ddwccf-dash-item__info { min-width: 0; }
+	.ddwccf-dash-item__info strong { color: #111827; display: block; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	.ddwccf-dash-item__info span { color: #6b7280; display: block; font-size: 12px; margin-top: 2px; }
+	.ddwccf-dash-item__value { color: #111827; flex-shrink: 0; font-size: 13px; font-weight: 600; }
+}
+
+// Campaign editor rail: status badge beside the Funding heading.
+.ddwccf-funding-box .ddfw-fields-section-header {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	justify-content: space-between;
+
+	h3, p { margin: 0; }
+}
+
+// Campaign editor rail: funding summary.
+.ddwccf-funding {
+	.amount, bdi, .woocommerce-Price-currencySymbol { color: inherit; font-size: inherit; font-weight: inherit; }
+
+	.ddwccf-progress { height: 8px; margin-top: 12px; max-width: none; }
+	&--reached .ddwccf-progress span { background: #15803d; }
+}
+
+.ddwccf-funding__head {
+	align-items: baseline;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ddwccf-funding__amount { color: #111827; font-size: 26px; font-weight: 600; line-height: 1.2; }
+.ddwccf-funding__percent { color: @primary; font-size: 14px; font-weight: 600; }
+.ddwccf-funding--reached .ddwccf-funding__percent { color: #15803d; }
+.ddwccf-funding__goal { color: #6b7280; font-size: 13px; margin: 4px 0 0; }
+
+.ddwccf-funding__stats {
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 16px 0 0;
+
+	div { padding: 10px 12px; }
+	div + div { border-left: 1px solid #e5e7eb; }
+	dt { color: #6b7280; font-size: 12px; }
+	dd { color: #111827; font-size: 15px; font-weight: 600; margin: 2px 0 0; }
+}
+
+// The edit screen's side column is a 320px grid track, but select2 writes an inline pixel width wider than it,
+// and a grid item will not shrink below its content: the cards overflowed the screen by 72px. Let them shrink.
+.ddfw-edit-screen-side > .ddfw-fields-section {
+	min-width: 0;
+
+	.form-table {
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.select2-container,
+	select,
+	input,
+	textarea {
+		max-width: 100%;
+	}
+
+	textarea {
+		box-sizing: border-box;
+		width: 100%;
+	}
+}

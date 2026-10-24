@@ -1,0 +1,27 @@
+# Files that do not belong in the WordPress.org zip. src/ and the build config ship so the assets can be rebuilt.
+.distignore
+.git
+.gitignore
+.claude
+build
+bin
+node_modules
+composer.json
+composer.lock
+Gruntfile.js
+package-lock.json
+phpcs.xml
+phpcs.xml.dist
+tests
+*.tar.gz
+*.zip
+.DS_Store
+**/.DS_Store
+MIGRATION.md
+
+# GitHub readme. readme.txt ships instead.
+README.md
+Thumbs.db
+__MACOSX
+graphify-out
+.graphifyignore
