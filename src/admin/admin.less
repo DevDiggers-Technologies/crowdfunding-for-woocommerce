@@ -178,3 +178,26 @@
 	dt { color: #6b7280; font-size: 12px; }
 	dd { color: #111827; font-size: 15px; font-weight: 600; margin: 2px 0 0; }
 }
+
+// The edit screen's side column is a 320px grid track, but select2 writes an inline pixel width wider than it,
+// and a grid item will not shrink below its content: the cards overflowed the screen by 72px. Let them shrink.
+.ddfw-edit-screen-side > .ddfw-fields-section {
+	min-width: 0;
+
+	.form-table {
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.select2-container,
+	select,
+	input,
+	textarea {
+		max-width: 100%;
+	}
+
+	textarea {
+		box-sizing: border-box;
+		width: 100%;
+	}
+}

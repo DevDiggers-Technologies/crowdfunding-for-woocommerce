@@ -27,6 +27,10 @@ if ( ! class_exists( 'DDWCCF_File_Handler' ) ) {
 		 * Constructor.
 		 */
 		public function __construct() {
+			// Before anything that queries orders, the upgrade routine included.
+			add_filter( 'woocommerce_order_query_args', [ Common\DDWCCF_Common_Functions::class, 'ddwccf_park_order_meta_query' ] );
+			add_filter( 'woocommerce_order_data_store_cpt_get_orders_query', [ Common\DDWCCF_Common_Functions::class, 'ddwccf_restore_order_meta_query' ], 10, 2 );
+
 			$this->ddwccf_configuration = $this->ddwccf_set_globals();
 
 			foreach ( [ 'update_option__ddwccf_backed_endpoint', 'add_option__ddwccf_backed_endpoint' ] as $hook ) {

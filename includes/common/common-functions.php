@@ -37,6 +37,67 @@ if ( ! class_exists( 'DDWCCF_Common_Functions' ) ) {
 		}
 
 		/**
+		 * Legacy (posts) order storage ignores `meta_query` in wc_get_orders() and returns every order.
+		 * Park this plugin's own meta query before WooCommerce sees it, so it can be handed to WP_Query.
+		 *
+		 * @param array $args wc_get_orders() arguments.
+		 * @return array
+		 */
+		public static function ddwccf_park_order_meta_query( $args ) {
+			if ( empty( $args['meta_query'] ) || ! self::ddwccf_is_own_meta_query( $args['meta_query'] ) || \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
+				return $args;
+			}
+
+			$args['ddwccf_meta_query'] = $args['meta_query'];
+			unset( $args['meta_query'] );
+
+			return $args;
+		}
+
+		/**
+		 * Hand a parked meta query to WP_Query on posts storage.
+		 *
+		 * @param array $query      WP_Query arguments WooCommerce built.
+		 * @param array $query_vars Arguments passed to wc_get_orders().
+		 * @return array
+		 */
+		public static function ddwccf_restore_order_meta_query( $query, $query_vars ) {
+			unset( $query['ddwccf_meta_query'] );
+
+			if ( ! empty( $query_vars['ddwccf_meta_query'] ) ) {
+				$ours = $query_vars['ddwccf_meta_query'];
+			} elseif ( ! empty( $query_vars['meta_query'] ) && self::ddwccf_is_own_meta_query( $query_vars['meta_query'] ) ) {
+				$ours = $query_vars['meta_query'];
+			} else {
+				return $query;
+			}
+
+			$query['meta_query']   = ! empty( $query['meta_query'] ) ? (array) $query['meta_query'] : []; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Contribution orders are tagged with this meta.
+			$query['meta_query'][] = $ours;
+
+			return $query;
+		}
+
+		/**
+		 * Whether a meta query filters on this plugin's own order meta. A foreign plugin's query is left alone.
+		 *
+		 * @param array $meta_query Meta query.
+		 * @return bool
+		 */
+		protected static function ddwccf_is_own_meta_query( $meta_query ) {
+			foreach ( (array) $meta_query as $key => $clause ) {
+				if ( 'relation' === $key || ! is_array( $clause ) ) {
+					continue;
+				}
+				if ( isset( $clause['key'] ) ? 0 === strpos( (string) $clause['key'], '_ddwccf_' ) : self::ddwccf_is_own_meta_query( $clause ) ) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/**
 		 * Backed Campaigns endpoint in My Account.
 		 *
 		 * @return void

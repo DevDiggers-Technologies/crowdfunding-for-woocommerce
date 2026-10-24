@@ -21,3 +21,7 @@ MIGRATION.md
 
 # GitHub readme. readme.txt ships instead.
 README.md
+Thumbs.db
+__MACOSX
+graphify-out
+.graphifyignore
