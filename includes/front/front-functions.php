@@ -366,6 +366,11 @@ if ( ! class_exists( 'DDWCCF_Front_Functions' ) ) {
 				return false;
 			}
 
+			if ( ! $posted['reward_id'] && ! DDWCCF_Event_Helper::allows_no_reward( $data, $this->ddwccf_configuration ) ) {
+				wc_add_notice( esc_html__( 'Please choose a reward.', 'devdiggers-crowdfunding-for-woocommerce' ), 'error' );
+				return false;
+			}
+
 			$maximum = (float) $this->ddwccf_configuration['max_contribution'];
 
 			if ( $resolved['base'] <= 0 || $resolved['base'] < $resolved['minimum'] ) {

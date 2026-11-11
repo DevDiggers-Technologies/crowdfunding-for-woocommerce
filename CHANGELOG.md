@@ -2,6 +2,13 @@
 
 All notable changes to DevDiggers Crowdfunding for WooCommerce.
 
+## 1.0.1 - 2026-11-12
+
+### New
+
+- **Rewards:** Option to remove the "No reward, I just want to help" choice, so supporters must pick a reward.
+- **Rewards:** Custom text for the "No reward" option.
+
 ## 1.0.0 - 2026-10-17
 
 First release on WordPress.org.

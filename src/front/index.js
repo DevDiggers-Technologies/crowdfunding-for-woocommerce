@@ -38,6 +38,12 @@ const initContribution = ( box ) => {
 		input.addEventListener( 'input', refresh );
 	}
 
+	// A preselected reward raises the minimum, same as picking it.
+	const preselected = box.querySelector( 'input[name="ddwccf_reward_id"]:checked:not([value=""])' );
+	if ( preselected ) {
+		preselected.dispatchEvent( new Event( 'change' ) );
+	}
+
 	refresh();
 };
 

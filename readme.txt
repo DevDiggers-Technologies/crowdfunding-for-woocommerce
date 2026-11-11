@@ -9,7 +9,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -262,6 +262,10 @@ To build the assets from source:
 The build configuration is in `webpack.config.js` and `babel.config.js`. Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 
 == Changelog ==
+
+= 1.0.1 - 2026-11-12 =
+* New: Option to remove the "No reward, I just want to help" choice, so supporters must pick a reward.
+* New: Custom text for the "No reward" option.
 
 = 1.0.0 - 2026-10-17 =
 * New: Crowdfunding and donation campaigns with a goal, an end date or both.

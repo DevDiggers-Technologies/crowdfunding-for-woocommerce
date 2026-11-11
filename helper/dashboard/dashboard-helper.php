@@ -60,11 +60,13 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Helper' ) ) {
 		protected function make_summary( $value, $previous ) {
 			$value    = (float) $value;
 			$previous = (float) $previous;
-			$change   = $previous > 0 ? ( $value - $previous ) / $previous * 100 : ( $value > 0 ? 100 : 0 );
+			// Nothing in the previous period: no percentage to give ( "100%" read as a doubling ).
+			$change = $previous > 0 ? round( ( $value - $previous ) / $previous * 100, 1 ) : ( $value > 0 ? null : 0 );
 
 			return [
 				'value'       => $value,
-				'change'      => round( $change, 1 ),
+				'previous'    => $previous,
+				'change'      => $change,
 				'is_positive' => $value >= $previous,
 			];
 		}
@@ -147,6 +149,7 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Helper' ) ) {
 					$name              = trim( $order->get_formatted_billing_full_name() );
 					$stats['recent'][] = [
 						'number'   => $order->get_order_number(),
+						'email'    => $order->get_billing_email(),
 						'customer' => $name ? $name : __( 'Guest', 'devdiggers-crowdfunding-for-woocommerce' ),
 						'events'   => implode( ', ', $names ),
 						'amount'   => $amount,
@@ -213,9 +216,11 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Helper' ) ) {
 			usort( $stats['top'], fn( $a, $b ) => $b['collected'] <=> $a['collected'] );
 			usort( $stats['ending'], fn( $a, $b ) => $a['days_left'] <=> $b['days_left'] );
 
-			$stats['top']     = array_slice( array_filter( $stats['top'], fn( $row ) => $row['collected'] > 0 ), 0, 5 );
-			$stats['ending']  = array_slice( $stats['ending'], 0, 5 );
-			$stats['success'] = $finished ? round( $succeeded * 100 / $finished ) : null;
+			$stats['top']       = array_slice( array_filter( $stats['top'], fn( $row ) => $row['collected'] > 0 ), 0, 5 );
+			$stats['ending']    = array_slice( $stats['ending'], 0, 5 );
+			$stats['success']   = $finished ? round( $succeeded * 100 / $finished ) : null;
+			$stats['finished']  = $finished;
+			$stats['succeeded'] = $succeeded;
 
 			return $stats;
 		}

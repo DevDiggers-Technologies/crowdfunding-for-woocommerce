@@ -36,6 +36,9 @@ if ( ! class_exists( 'DDWCCF_Common_Hooks' ) ) {
 			add_filter( 'woocommerce_hidden_order_itemmeta', [ $this, 'ddwccf_hidden_order_item_meta' ] );
 			add_filter( 'woocommerce_order_item_get_formatted_meta_data', [ $this, 'ddwccf_customer_order_item_meta' ], 10, 2 );
 
+			// Wallet payouts read "Crowdfunding Payout" in the wallet's transaction lists.
+			add_filter( 'ddwcwm_modify_transaction_translations', [ $this, 'ddwccf_wallet_transaction_label' ] );
+
 			// Tag campaign orders on classic and block checkout.
 			add_action( 'woocommerce_checkout_order_processed', [ $this, 'ddwccf_tag_event_order' ] );
 			add_action( 'woocommerce_store_api_checkout_order_processed', [ $this, 'ddwccf_tag_event_order' ] );

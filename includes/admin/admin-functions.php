@@ -71,6 +71,8 @@ if ( ! class_exists( 'DDWCCF_Admin_Functions' ) ) {
 					'_ddwccf_button_label'             => $text,
 					'_ddwccf_preset_amounts'           => [ $this, 'sanitize_preset_amounts' ],
 					'_ddwccf_max_contribution'         => [ $this, 'sanitize_amount' ],
+					'_ddwccf_allow_no_reward'          => $checkbox,
+					'_ddwccf_no_reward_label'          => $text,
 					'_ddwccf_allow_anonymous'          => $checkbox,
 					'_ddwccf_allow_messages'           => $checkbox,
 					'_ddwccf_close_on_goal'            => $checkbox,

@@ -1,6 +1,6 @@
 {
   "name": "devdiggers-crowdfunding-for-woocommerce",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DevDiggers Crowdfunding for WooCommerce",
   "main": "index.js",
   "scripts": {

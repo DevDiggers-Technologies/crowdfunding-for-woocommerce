@@ -69,6 +69,8 @@ if ( ! class_exists( 'DDWCCF_File_Handler' ) ) {
 				'enabled_payment_gateways'           => [],
 				'preset_amounts'                     => '10, 25, 50, 100',
 				'max_contribution'                   => '',
+				'allow_no_reward'                    => 'yes',
+				'no_reward_label'                    => __( 'No reward, I just want to help', 'devdiggers-crowdfunding-for-woocommerce' ),
 				'allow_anonymous'                    => 'yes',
 				'allow_messages'                     => 'yes',
 				'close_on_goal'                      => 'yes',
@@ -100,7 +102,7 @@ if ( ! class_exists( 'DDWCCF_File_Handler' ) ) {
 				$value = get_option( '_ddwccf_' . $key, $default );
 
 				// Text options fall back to the default when saved empty.
-				if ( '' === $value && is_string( $default ) && in_array( $key, [ 'button_label', 'backed_endpoint', 'backed_endpoint_title', 'accent_color' ], true ) ) {
+				if ( '' === $value && is_string( $default ) && in_array( $key, [ 'button_label', 'no_reward_label', 'backed_endpoint', 'backed_endpoint_title', 'accent_color' ], true ) ) {
 					$value = $default;
 				}
 

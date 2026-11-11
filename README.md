@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Requires** | WordPress 6.5+, WooCommerce 9.0+, PHP 7.4+ |
 | **Tested up to** | WordPress 7.1, WooCommerce 11.2 |
 | **License** | GPLv3 or later |
