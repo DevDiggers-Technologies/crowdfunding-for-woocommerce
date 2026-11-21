@@ -230,12 +230,12 @@ if ( ! class_exists( 'DDWCCF_Events_List_Template' ) ) {
 		 * @return void
 		 */
 		public function no_items() {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list search.
-			if ( ! empty( $_GET['s'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list search and filters.
+			if ( ! empty( $_GET['s'] ) || 'all' !== $this->get_current_view() ) {
 				ddfw_print_empty_state(
 					[
 						'title'       => __( 'No campaigns found', 'devdiggers-crowdfunding-for-woocommerce' ),
-						'description' => __( 'No campaign matches your search. Try another name.', 'devdiggers-crowdfunding-for-woocommerce' ),
+						'description' => __( 'No campaign matches your search or filters. Try another name or view.', 'devdiggers-crowdfunding-for-woocommerce' ),
 					]
 				);
 				return;
@@ -360,6 +360,18 @@ if ( ! class_exists( 'DDWCCF_Events_List_Template' ) ) {
 				'disable' => esc_html__( 'Disable', 'devdiggers-crowdfunding-for-woocommerce' ),
 				'delete'  => esc_html__( 'Move to trash', 'devdiggers-crowdfunding-for-woocommerce' ),
 			];
+		}
+
+		/**
+		 * The primary column prints its own row actions, toggle button included; skip the second toggle.
+		 *
+		 * @param object|array $item        Row.
+		 * @param string       $column_name Column.
+		 * @param string       $primary     Primary column.
+		 * @return string
+		 */
+		protected function handle_row_actions( $item, $column_name, $primary ) {
+			return '';
 		}
 	}
 }

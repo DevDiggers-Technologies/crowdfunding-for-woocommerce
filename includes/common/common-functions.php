@@ -204,6 +204,17 @@ if ( ! class_exists( 'DDWCCF_Common_Functions' ) ) {
 		}
 
 		/**
+		 * Label for the wallet reference a campaign payout ( made with Pro ) is saved with.
+		 *
+		 * @param array $labels Wallet transaction labels.
+		 * @return array
+		 */
+		public function ddwccf_wallet_transaction_label( $labels ) {
+			$labels['ddwccf_payout'] = esc_html__( 'Crowdfunding Payout', 'devdiggers-crowdfunding-for-woocommerce' );
+			return $labels;
+		}
+
+		/**
 		 * Supporters see their reward and message in order details and emails,
 		 * where WooCommerce hides underscore meta.
 		 *

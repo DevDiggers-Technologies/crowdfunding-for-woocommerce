@@ -182,6 +182,17 @@ if ( ! class_exists( 'DDWCCF_Orders_List_Template' ) ) {
 		 * @return void
 		 */
 		public function no_items() {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list search and filters.
+			if ( ! empty( $_GET['s'] ) || ! empty( $_GET['ddwccf-event'] ) || ! empty( $_GET['ddwccf-counted'] ) ) {
+				ddfw_print_empty_state(
+					[
+						'title'       => __( 'No contributions found', 'devdiggers-crowdfunding-for-woocommerce' ),
+						'description' => __( 'No contribution matches your search or filters.', 'devdiggers-crowdfunding-for-woocommerce' ),
+					]
+				);
+				return;
+			}
+
 			ddfw_print_empty_state(
 				[
 					'title'       => __( 'No contributions yet', 'devdiggers-crowdfunding-for-woocommerce' ),

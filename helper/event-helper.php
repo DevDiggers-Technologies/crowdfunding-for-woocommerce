@@ -262,6 +262,18 @@ if ( ! class_exists( 'DDWCCF_Event_Helper' ) ) {
 		}
 
 		/**
+		 * Whether supporters may contribute without a reward.
+		 * Always true when the campaign has no reward left to pick, so it keeps accepting contributions.
+		 *
+		 * @param array $data   Campaign data.
+		 * @param array $config Configuration.
+		 * @return bool
+		 */
+		public static function allows_no_reward( $data, $config ) {
+			return 'yes' === $config['allow_no_reward'] || ! array_filter( (array) $data['rewards'], [ __CLASS__, 'is_reward_available' ] );
+		}
+
+		/**
 		 * Campaign IDs.
 		 *
 		 * @param array $args Extra WP_Query args.

@@ -42,7 +42,11 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 		 * @return string
 		 */
 		protected function posted( $key, $sanitizer = 'sanitize_text_field' ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified by the caller; sanitized through the given callback.
+			if ( empty( $_POST['ddwccf_save_event_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwccf_save_event_nonce'] ) ), 'ddwccf_save_event_nonce_action' ) ) {
+				return '';
+			}
+
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized through the given callback.
 			return isset( $_POST[ $key ] ) && ! is_array( $_POST[ $key ] ) ? call_user_func( $sanitizer, wp_unslash( $_POST[ $key ] ) ) : '';
 		}
 
@@ -53,7 +57,11 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 		 * @return array
 		 */
 		protected function posted_rows( $key ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified by the caller; every value is sanitized by the row parsers.
+			if ( empty( $_POST['ddwccf_save_event_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwccf_save_event_nonce'] ) ), 'ddwccf_save_event_nonce_action' ) ) {
+				return [];
+			}
+
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Every value is sanitized by the row parsers.
 			return isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ? wp_unslash( $_POST[ $key ] ) : [];
 		}
 

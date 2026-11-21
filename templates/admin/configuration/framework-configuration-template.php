@@ -268,6 +268,8 @@ if ( ! class_exists( 'DDWCCF_Framework_Configuration_Template' ) ) {
 							'description' => __( 'Small touches that raise conversion and the average contribution.', 'devdiggers-crowdfunding-for-woocommerce' ),
 						],
 						'fields' => [
+							$this->checkbox( 'allow_no_reward', __( 'No reward option', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Let supporters contribute without picking a reward', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Turn off to make supporters choose one of the campaign rewards. The first available reward is preselected. Campaigns without rewards, or with every reward sold out, still accept plain contributions.', 'devdiggers-crowdfunding-for-woocommerce' ) ),
+							$this->input( 'no_reward_label', __( 'No reward label', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Text of the option for supporters who do not want a reward.', 'devdiggers-crowdfunding-for-woocommerce' ) ),
 							$this->checkbox( 'allow_anonymous', __( 'Anonymous giving', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Let supporters hide their name from the public list', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'You still see who they are.', 'devdiggers-crowdfunding-for-woocommerce' ) ),
 							$this->checkbox( 'allow_messages', __( 'Messages', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Let supporters leave a public message', 'devdiggers-crowdfunding-for-woocommerce' ), __( 'Shown on the supporters wall and in the organiser email. Up to 300 characters.', 'devdiggers-crowdfunding-for-woocommerce' ) ),
 							$this->locked(

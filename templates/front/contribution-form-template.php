@@ -46,16 +46,23 @@ if ( ! class_exists( 'DDWCCF_Contribution_Form_Template' ) ) {
 				<?php if ( $data['rewards'] ) : ?>
 					<fieldset class="ddwccf-rewards">
 						<legend><?php esc_html_e( 'Choose a reward', 'devdiggers-crowdfunding-for-woocommerce' ); ?></legend>
-						<label class="ddwccf-reward">
-							<input type="radio" name="ddwccf_reward_id" value="" data-amount="0" checked />
-							<span class="ddwccf-reward__body">
-								<span class="ddwccf-reward__head"><strong><?php esc_html_e( 'No reward, I just want to help', 'devdiggers-crowdfunding-for-woocommerce' ); ?></strong></span>
-							</span>
-						</label>
+						<?php $preselect = ! DDWCCF_Event_Helper::allows_no_reward( $data, $config ); ?>
+						<?php if ( ! $preselect ) : ?>
+							<label class="ddwccf-reward">
+								<input type="radio" name="ddwccf_reward_id" value="" data-amount="0" checked />
+								<span class="ddwccf-reward__body">
+									<span class="ddwccf-reward__head"><strong><?php echo esc_html( $config['no_reward_label'] ); ?></strong></span>
+								</span>
+							</label>
+						<?php endif; ?>
 						<?php foreach ( $data['rewards'] as $reward ) : ?>
-							<?php $available = DDWCCF_Event_Helper::is_reward_available( $reward ); ?>
+							<?php
+							$available = DDWCCF_Event_Helper::is_reward_available( $reward );
+							$checked   = $preselect && $available;
+							$preselect = $preselect && ! $available;
+							?>
 							<label class="ddwccf-reward<?php echo $available ? '' : ' is-sold-out'; ?>">
-								<input type="radio" name="ddwccf_reward_id" value="<?php echo esc_attr( $reward['id'] ); ?>" data-amount="<?php echo esc_attr( $reward['amount'] ); ?>" <?php disabled( ! $available ); ?> />
+								<input type="radio" name="ddwccf_reward_id" value="<?php echo esc_attr( $reward['id'] ); ?>" data-amount="<?php echo esc_attr( $reward['amount'] ); ?>" <?php disabled( ! $available ); ?> <?php checked( $checked ); ?> />
 								<span class="ddwccf-reward__body">
 									<span class="ddwccf-reward__head">
 										<strong><?php echo esc_html( $reward['title'] ); ?></strong>

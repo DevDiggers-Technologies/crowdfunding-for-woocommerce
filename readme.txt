@@ -267,6 +267,7 @@ The build configuration is in `webpack.config.js` and `babel.config.js`. Two thi
 * New: Crowdfunding and donation campaigns with a goal, an end date or both.
 * New: Fixed or "choose your amount" contributions with quick pick amounts.
 * New: Up to three reward tiers per campaign with quantity limits and delivery dates.
+* New: Option to remove or rename the "No reward" choice.
 * New: Campaign progress card, countdown, Story, Rewards and Supporters tabs.
 * New: Supporters wall with messages and anonymous giving.
 * New: Share buttons and a Backed Campaigns page in My Account.

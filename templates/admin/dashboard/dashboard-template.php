@@ -50,6 +50,18 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 		}
 
 		/**
+		 * Campaign cover: the product image, or nothing for the placeholder tile.
+		 *
+		 * @param int $event_id Campaign product ID.
+		 * @return string
+		 */
+		protected function image( $event_id ) {
+			$product = wc_get_product( $event_id );
+
+			return $product && $product->get_image_id() ? $product->get_image( [ 72, 72 ] ) : '';
+		}
+
+		/**
 		 * Render.
 		 *
 		 * @return void
@@ -68,12 +80,16 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 				}
 			}
 
+			// Every card says how it compares: "↗ 12% from $50", "None in the previous period", or
+			// "No change" when the two periods match.
 			$card = fn( $title, $key, $icon, $money = false ) => [
 				'title'       => $title,
 				'value'       => $money ? wc_price( $summary[ $key ]['value'] ) : $summary[ $key ]['value'],
 				'value_type'  => $money ? 'html' : 'text',
 				'change'      => $summary[ $key ]['change'],
 				'is_positive' => $summary[ $key ]['is_positive'],
+				'previous'    => $money ? wc_price( $summary[ $key ]['previous'] ) : number_format_i18n( $summary[ $key ]['previous'] ),
+				'note'        => 0.0 === (float) $summary[ $key ]['change'] && null !== $summary[ $key ]['change'] ? esc_html__( 'No change vs previous period', 'devdiggers-crowdfunding-for-woocommerce' ) : '',
 				'icon'        => $this->icon( $icon ),
 			];
 
@@ -94,8 +110,10 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 							'title'       => esc_html__( 'Success Rate', 'devdiggers-crowdfunding-for-woocommerce' ),
 							'value'       => null === $events['success'] ? '&mdash;' : esc_html( $events['success'] . '%' ),
 							'value_type'  => 'html',
-							'change'      => 0,
-							'is_positive' => true,
+							'note'        => $events['finished']
+								/* translators: 1: funded campaigns, 2: finished campaigns. */
+								? esc_html( sprintf( _n( '%1$d of %2$d campaign funded', '%1$d of %2$d campaigns funded', $events['finished'], 'devdiggers-crowdfunding-for-woocommerce' ), $events['succeeded'], $events['finished'] ) )
+								: esc_html__( 'No finished campaigns yet', 'devdiggers-crowdfunding-for-woocommerce' ),
 							'icon'        => $this->icon( '<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>' ),
 						],
 					],
@@ -110,9 +128,10 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 							'x_key'      => 'date',
 							'series'     => [
 								[
-									'key'   => 'raised',
-									'label' => esc_html__( 'Amount Raised', 'devdiggers-crowdfunding-for-woocommerce' ),
-									'color' => '#0256ff',
+									'key'          => 'raised',
+									'label'        => esc_html__( 'Amount Raised', 'devdiggers-crowdfunding-for-woocommerce' ),
+									'color'        => '#0256ff',
+									'value_format' => 'currency',
 								],
 								[
 									'key'   => 'contributions',
@@ -167,39 +186,6 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 		}
 
 		/**
-		 * One linked list row.
-		 *
-		 * @param string $url   URL.
-		 * @param string $title Title.
-		 * @param string $meta  Meta line.
-		 * @param string $value Right side HTML.
-		 * @return void
-		 */
-		protected function row( $url, $title, $meta, $value ) {
-			?>
-			<a class="ddwccf-dash-item" href="<?php echo esc_url( $url ); ?>">
-				<span class="ddwccf-dash-item__info">
-					<strong><?php echo esc_html( $title ); ?></strong>
-					<span><?php echo esc_html( $meta ); ?></span>
-				</span>
-				<span class="ddwccf-dash-item__value"><?php echo wp_kses_post( $value ); ?></span>
-			</a>
-			<?php
-		}
-
-		/**
-		 * Empty widget message.
-		 *
-		 * @param string $message Message.
-		 * @return void
-		 */
-		protected function empty_state( $message ) {
-			?>
-			<div class="ddfw-dash-no-data"><?php echo esc_html( $message ); ?></div>
-			<?php
-		}
-
-		/**
 		 * Upgrade card under the figures.
 		 *
 		 * @return void
@@ -228,16 +214,20 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 		 * @return void
 		 */
 		public function render_top() {
-			if ( ! $this->data['events']['top'] ) {
-				$this->empty_state( __( 'No campaign has raised money yet.', 'devdiggers-crowdfunding-for-woocommerce' ) );
-				return;
-			}
+			$items = [];
 
 			foreach ( $this->data['events']['top'] as $row ) {
-				/* translators: %s: funded percentage. */
-				$meta = $row['target'] ? sprintf( __( '%s%% funded', 'devdiggers-crowdfunding-for-woocommerce' ), $row['progress'] ) : __( 'No goal', 'devdiggers-crowdfunding-for-woocommerce' );
-				$this->row( $row['url'], $row['name'], $meta, wc_price( $row['collected'] ) );
+				$items[] = [
+					'url'   => $row['url'],
+					'title' => $row['name'],
+					/* translators: %s: funded percentage. */
+					'meta'  => $row['target'] ? sprintf( __( '%s%% funded', 'devdiggers-crowdfunding-for-woocommerce' ), $row['progress'] ) : __( 'No goal', 'devdiggers-crowdfunding-for-woocommerce' ),
+					'image' => $this->image( $row['id'] ),
+					'value' => wc_price( $row['collected'] ),
+				];
 			}
+
+			DDFW_Dashboard::render_list( $items, __( 'No campaign has raised money yet.', 'devdiggers-crowdfunding-for-woocommerce' ) );
 		}
 
 		/**
@@ -246,14 +236,19 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 		 * @return void
 		 */
 		public function render_recent() {
-			if ( ! $this->data['recent'] ) {
-				$this->empty_state( __( 'No contributions in this period.', 'devdiggers-crowdfunding-for-woocommerce' ) );
-				return;
-			}
+			$items = array_map(
+				fn( $row ) => [
+					'url'   => $row['url'],
+					'title' => $row['customer'],
+					'meta'  => '#' . $row['number'] . ' · ' . $row['events'] . ' · ' . $row['date'],
+					'image' => $row['email'] ? get_avatar_url( $row['email'], [ 'size' => 72 ] ) : '',
+					'shape' => 'round',
+					'value' => wc_price( $row['amount'] ),
+				],
+				$this->data['recent']
+			);
 
-			foreach ( $this->data['recent'] as $row ) {
-				$this->row( $row['url'], '#' . $row['number'] . ' ' . $row['customer'], $row['events'] . ' · ' . $row['date'], wc_price( $row['amount'] ) );
-			}
+			DDFW_Dashboard::render_list( $items, __( 'No contributions in this period.', 'devdiggers-crowdfunding-for-woocommerce' ) );
 		}
 
 		/**
@@ -262,16 +257,20 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 		 * @return void
 		 */
 		public function render_ending() {
-			if ( ! $this->data['events']['ending'] ) {
-				$this->empty_state( __( 'No live campaign ends in the next 14 days.', 'devdiggers-crowdfunding-for-woocommerce' ) );
-				return;
-			}
+			$items = [];
 
 			foreach ( $this->data['events']['ending'] as $row ) {
-				/* translators: %d: number of days. */
-				$meta = sprintf( _n( '%d day left', '%d days left', $row['days_left'], 'devdiggers-crowdfunding-for-woocommerce' ), $row['days_left'] );
-				$this->row( $row['url'], $row['name'], $meta, $row['target'] ? $row['progress'] . '%' : wc_price( $row['collected'] ) );
+				$items[] = [
+					'url'   => $row['url'],
+					'title' => $row['name'],
+					/* translators: %d: number of days. */
+					'meta'  => sprintf( _n( '%d day left', '%d days left', $row['days_left'], 'devdiggers-crowdfunding-for-woocommerce' ), $row['days_left'] ),
+					'image' => $this->image( $row['id'] ),
+					'value' => $row['target'] ? esc_html( $row['progress'] . '%' ) : wc_price( $row['collected'] ),
+				];
 			}
+
+			DDFW_Dashboard::render_list( $items, __( 'No live campaign ends in the next 14 days.', 'devdiggers-crowdfunding-for-woocommerce' ) );
 		}
 	}
 }
