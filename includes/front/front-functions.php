@@ -558,7 +558,7 @@ if ( ! class_exists( 'DDWCCF_Front_Functions' ) ) {
 
 			ob_start();
 			new Front\DDWCCF_Campaigns_Grid_Template( (array) $atts, $this->ddwccf_configuration );
-			return ob_get_clean();
+			return wp_kses( ob_get_clean(), ddfw_kses_allowed_form_html() );
 		}
 
 		/**
@@ -581,7 +581,7 @@ if ( ! class_exists( 'DDWCCF_Front_Functions' ) ) {
 			echo '<div class="ddwccf-single-card">';
 			Front\DDWCCF_Campaign_Card_Template::render( $event_id, $this->ddwccf_configuration, 'grid' );
 			echo '</div>';
-			return ob_get_clean();
+			return wp_kses( ob_get_clean(), ddfw_kses_allowed_form_html() );
 		}
 	}
 }
