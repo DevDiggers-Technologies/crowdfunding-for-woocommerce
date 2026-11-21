@@ -9,7 +9,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.1
+Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -263,14 +263,11 @@ The build configuration is in `webpack.config.js` and `babel.config.js`. Two thi
 
 == Changelog ==
 
-= 1.0.1 - 2026-11-12 =
-* New: Option to remove the "No reward, I just want to help" choice, so supporters must pick a reward.
-* New: Custom text for the "No reward" option.
-
 = 1.0.0 - 2026-10-17 =
 * New: Crowdfunding and donation campaigns with a goal, an end date or both.
 * New: Fixed or "choose your amount" contributions with quick pick amounts.
 * New: Up to three reward tiers per campaign with quantity limits and delivery dates.
+* New: Option to remove or rename the "No reward" choice.
 * New: Campaign progress card, countdown, Story, Rewards and Supporters tabs.
 * New: Supporters wall with messages and anonymous giving.
 * New: Share buttons and a Backed Campaigns page in My Account.
