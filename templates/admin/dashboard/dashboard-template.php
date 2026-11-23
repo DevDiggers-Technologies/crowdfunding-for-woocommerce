@@ -199,7 +199,7 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Template' ) ) {
 						esc_html__( 'Customer campaigns from My Account, with approval', 'devdiggers-crowdfunding-for-woocommerce' ),
 						esc_html__( 'Platform fees, payout requests and DevDiggers Wallet payouts', 'devdiggers-crowdfunding-for-woocommerce' ),
 						esc_html__( 'All or nothing funding with one click refunds', 'devdiggers-crowdfunding-for-woocommerce' ),
-						esc_html__( 'Stretch goals, campaign updates and unlimited rewards', 'devdiggers-crowdfunding-for-woocommerce' ),
+						esc_html__( 'Stretch goals and campaign updates', 'devdiggers-crowdfunding-for-woocommerce' ),
 						esc_html__( 'Needs Attention queue for approvals, payouts and refunds', 'devdiggers-crowdfunding-for-woocommerce' ),
 						esc_html__( 'CSV export of campaigns and contributions', 'devdiggers-crowdfunding-for-woocommerce' ),
 					],

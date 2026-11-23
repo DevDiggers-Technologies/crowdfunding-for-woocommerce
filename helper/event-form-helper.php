@@ -21,20 +21,6 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 		use DDWCCF_Error_Helper;
 
 		/**
-		 * Reward tiers a campaign can offer.
-		 *
-		 * @return int
-		 */
-		public static function get_max_rewards() {
-			/**
-			 * Filters how many reward tiers a campaign can offer.
-			 *
-			 * @param int $max Reward tiers per campaign.
-			 */
-			return max( 1, absint( apply_filters( 'ddwccf_max_rewards', 3 ) ) );
-		}
-
-		/**
 		 * Read a posted scalar.
 		 *
 		 * @param string $key       Field name.
@@ -82,7 +68,6 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 
 		/**
 		 * Sanitize reward rows, keeping claimed counts of existing rewards.
-		 * Keeps up to get_max_rewards() tiers, or as many as the campaign already had.
 		 *
 		 * @param array $rows     Posted rows.
 		 * @param array $existing Current rewards.
@@ -90,7 +75,6 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 		 */
 		public static function parse_rewards( $rows, $existing = [] ) {
 			$claimed = array_change_key_case( array_column( $existing, 'claimed', 'id' ) );
-			$limit   = max( self::get_max_rewards(), count( $existing ) );
 			$rewards = [];
 
 			foreach ( (array) $rows as $row ) {
@@ -112,10 +96,6 @@ if ( ! class_exists( 'DDWCCF_Event_Form_Helper' ) ) {
 					'delivery'    => sanitize_text_field( $row['delivery'] ?? '' ),
 					'claimed'     => absint( $claimed[ strtolower( $id ) ] ?? 0 ),
 				];
-
-				if ( count( $rewards ) >= $limit ) {
-					break;
-				}
 			}
 
 			usort( $rewards, fn( $a, $b ) => $a['amount'] <=> $b['amount'] );

@@ -204,8 +204,6 @@ if ( ! class_exists( 'DDWCCF_Admin_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwccf_add_screen_options_in_events_list() {
-			global $myListTable; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WordPress list table convention.
-
 			add_screen_option(
 				'per_page',
 				[
@@ -215,7 +213,8 @@ if ( ! class_exists( 'DDWCCF_Admin_Functions' ) ) {
 				]
 			);
 
-			$myListTable = new Admin\Events\DDWCCF_Events_List_Template( $this->ddwccf_configuration ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WordPress list table convention.
+			// The list table registers its columns with the screen, so Screen Options can show them.
+			new Admin\Events\DDWCCF_Events_List_Template( $this->ddwccf_configuration );
 		}
 
 		/**
@@ -224,8 +223,6 @@ if ( ! class_exists( 'DDWCCF_Admin_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwccf_add_screen_options_in_orders_list() {
-			global $myListTable; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WordPress list table convention.
-
 			add_screen_option(
 				'per_page',
 				[
@@ -235,7 +232,8 @@ if ( ! class_exists( 'DDWCCF_Admin_Functions' ) ) {
 				]
 			);
 
-			$myListTable = new Admin\Orders\DDWCCF_Orders_List_Template(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WordPress list table convention.
+			// The list table registers its columns with the screen, so Screen Options can show them.
+			new Admin\Orders\DDWCCF_Orders_List_Template();
 		}
 
 		/**

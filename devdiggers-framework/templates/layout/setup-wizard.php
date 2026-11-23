@@ -59,10 +59,6 @@ $dashboard_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GE
                     <form id="ddfw-setup-wizard-form" method="post" novalidate>
                         <?php foreach ( $steps as $id => $step ) : ?>
                             <div class="ddfw-setup-wizard-step-content <?php echo $current_step === $id ? '' : 'ddfw-hide'; ?>" data-step="<?php echo esc_attr( $id ); ?>">
-                                <?php if ( 'license' === $id ) : ?>
-                                    <hr class="wp-header-end" />
-                                <?php endif; ?>
-
                                 <?php if ( ! empty( $step['title'] ) || ! empty( $step['description'] ) ) : ?>
                                     <div class="ddfw-setup-wizard-step-intro">
                                         <?php if ( ! empty( $step['title'] ) ) : ?>

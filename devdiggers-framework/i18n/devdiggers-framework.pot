@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: DevDiggers Framework 1.2.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/devdiggers-framework\n"
-"POT-Creation-Date: 2026-11-02 13:04:58+00:00\n"
+"POT-Creation-Date: 2026-11-17 08:44:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,8 +111,8 @@ msgid "Failed to connect to newsletter service. Please try again."
 msgstr ""
 
 #: devdiggers-framework/includes/class-ddfw-ajax.php:325
-#: devdiggers-framework/includes/class-ddfw-assets.php:89
-#: includes/class-ddfw-ajax.php:325 includes/class-ddfw-assets.php:89
+#: devdiggers-framework/includes/class-ddfw-assets.php:142
+#: includes/class-ddfw-ajax.php:325 includes/class-ddfw-assets.php:142
 msgid "Thank you for subscribing!"
 msgstr ""
 
@@ -121,126 +121,126 @@ msgstr ""
 msgid "Subscription failed. Please try again."
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:87
-#: includes/class-ddfw-assets.php:87
+#: devdiggers-framework/includes/class-ddfw-assets.php:140
+#: includes/class-ddfw-assets.php:140
 msgid "Subscribing..."
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:88
+#: devdiggers-framework/includes/class-ddfw-assets.php:141
 #: devdiggers-framework/templates/layout/dashboard.php:202
-#: includes/class-ddfw-assets.php:88 templates/layout/dashboard.php:202
+#: includes/class-ddfw-assets.php:141 templates/layout/dashboard.php:202
 msgid "Subscribe"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:90
-#: includes/class-ddfw-assets.php:90
+#: devdiggers-framework/includes/class-ddfw-assets.php:143
+#: includes/class-ddfw-assets.php:143
 msgid "An error occurred. Please try again."
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:108
-#: includes/class-ddfw-assets.php:108
+#: devdiggers-framework/includes/class-ddfw-assets.php:161
+#: includes/class-ddfw-assets.php:161
 msgid "Select Image"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:109
-#: includes/class-ddfw-assets.php:109
+#: devdiggers-framework/includes/class-ddfw-assets.php:162
+#: includes/class-ddfw-assets.php:162
 msgid "Use Image"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:110
-#: includes/class-ddfw-assets.php:110
+#: devdiggers-framework/includes/class-ddfw-assets.php:163
+#: includes/class-ddfw-assets.php:163
 msgid "Please enter"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:111
-#: includes/class-ddfw-assets.php:111
+#: devdiggers-framework/includes/class-ddfw-assets.php:164
+#: includes/class-ddfw-assets.php:164
 msgid "or more character"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:112
-#: includes/class-ddfw-assets.php:112
+#: devdiggers-framework/includes/class-ddfw-assets.php:165
+#: includes/class-ddfw-assets.php:165
 msgid "No result Found"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:113
-#: includes/class-ddfw-assets.php:113
+#: devdiggers-framework/includes/class-ddfw-assets.php:166
+#: includes/class-ddfw-assets.php:166
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:114
-#: includes/class-ddfw-assets.php:114
+#: devdiggers-framework/includes/class-ddfw-assets.php:167
+#: includes/class-ddfw-assets.php:167
 msgid "Dismiss"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:115
-#: includes/class-ddfw-assets.php:115
+#: devdiggers-framework/includes/class-ddfw-assets.php:168
+#: includes/class-ddfw-assets.php:168
 msgid "Select date"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:116
-#: includes/class-ddfw-assets.php:116
+#: devdiggers-framework/includes/class-ddfw-assets.php:169
+#: includes/class-ddfw-assets.php:169
 msgid "Select date and time"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:117
-#: includes/class-ddfw-assets.php:117
+#: devdiggers-framework/includes/class-ddfw-assets.php:170
+#: includes/class-ddfw-assets.php:170
 msgid "Now"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:118
-#: includes/class-ddfw-assets.php:118
+#: devdiggers-framework/includes/class-ddfw-assets.php:171
+#: includes/class-ddfw-assets.php:171
 msgid "Done"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:119
-#: includes/class-ddfw-assets.php:119
+#: devdiggers-framework/includes/class-ddfw-assets.php:172
+#: includes/class-ddfw-assets.php:172
 msgid "Time"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:120
-#: includes/class-ddfw-assets.php:120
+#: devdiggers-framework/includes/class-ddfw-assets.php:173
+#: includes/class-ddfw-assets.php:173
 msgid "Hour"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:121
-#: includes/class-ddfw-assets.php:121
+#: devdiggers-framework/includes/class-ddfw-assets.php:174
+#: includes/class-ddfw-assets.php:174
 msgid "Minute"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:122
+#: devdiggers-framework/includes/class-ddfw-assets.php:175
 #: devdiggers-framework/includes/class-ddfw-dashboard-data.php:62
 #: devdiggers-framework/includes/class-ddfw-dashboard-data.php:284
-#: includes/class-ddfw-assets.php:122 includes/class-ddfw-dashboard-data.php:62
+#: includes/class-ddfw-assets.php:175 includes/class-ddfw-dashboard-data.php:62
 #: includes/class-ddfw-dashboard-data.php:284
 msgid "Today"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:123
-#: includes/class-ddfw-assets.php:123
+#: devdiggers-framework/includes/class-ddfw-assets.php:176
+#: includes/class-ddfw-assets.php:176
 msgid "Clear"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:124
+#: devdiggers-framework/includes/class-ddfw-assets.php:177
 #: devdiggers-framework/includes/class-ddfw-dashboard.php:690
-#: includes/class-ddfw-assets.php:124 includes/class-ddfw-dashboard.php:690
+#: includes/class-ddfw-assets.php:177 includes/class-ddfw-dashboard.php:690
 msgid "Previous month"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:125
+#: devdiggers-framework/includes/class-ddfw-assets.php:178
 #: devdiggers-framework/includes/class-ddfw-dashboard.php:691
-#: includes/class-ddfw-assets.php:125 includes/class-ddfw-dashboard.php:691
+#: includes/class-ddfw-assets.php:178 includes/class-ddfw-dashboard.php:691
 msgid "Next month"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:126
+#: devdiggers-framework/includes/class-ddfw-assets.php:179
 #: devdiggers-framework/includes/class-ddfw-form-field.php:349
-#: includes/class-ddfw-assets.php:126 includes/class-ddfw-form-field.php:349
+#: includes/class-ddfw-assets.php:179 includes/class-ddfw-form-field.php:349
 msgid "Replace"
 msgstr ""
 
-#: devdiggers-framework/includes/class-ddfw-assets.php:127
+#: devdiggers-framework/includes/class-ddfw-assets.php:180
 #: devdiggers-framework/includes/class-ddfw-form-field.php:358
-#: includes/class-ddfw-assets.php:127 includes/class-ddfw-form-field.php:358
+#: includes/class-ddfw-assets.php:180 includes/class-ddfw-form-field.php:358
 msgid "Upload image"
 msgstr ""
 

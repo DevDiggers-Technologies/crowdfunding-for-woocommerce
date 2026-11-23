@@ -157,7 +157,7 @@ if ( ! class_exists( 'DDWCCF_Campaign_Card_Template' ) ) {
 			$svg      = fn( $path ) => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $path . '</svg>';
 			$kses     = ddfw_kses_allowed_svg_tags();
 			?>
-			<div class="ddwccf-share ddwccf-share--circle ddwccf-share--outline ddwccf-share--medium">
+			<div class="ddwccf-share">
 				<span class="ddwccf-share__label"><?php esc_html_e( 'Share this campaign', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
 				<div class="ddwccf-share__buttons">
 					<?php foreach ( $networks as $key => $network ) : ?>
