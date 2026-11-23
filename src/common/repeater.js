@@ -1,20 +1,12 @@
 /**
  * Repeatable reward rows. Rows are cloned from the text/html script template
  * inside each .ddwccf-repeater, with __INDEX__ replaced by a fresh index.
- * data-max caps the rows; the server enforces the same cap on save.
  */
 export const initRepeaters = ( root = document ) => {
 	root.querySelectorAll( '.ddwccf-repeater' ).forEach( ( repeater ) => {
 		const rows = repeater.querySelector( '.ddwccf-repeater__rows' );
 		const template = repeater.querySelector( 'script[type="text/html"]' );
-		const max = parseInt( repeater.dataset.max || '0', 10 );
-
-		const refresh = () => repeater.classList.toggle( 'is-full', max > 0 && rows.children.length >= max );
-
 		repeater.querySelector( '.ddwccf-repeater__add' ).addEventListener( 'click', () => {
-			if ( repeater.classList.contains( 'is-full' ) ) {
-				return;
-			}
 			const index = parseInt( repeater.dataset.next || '0', 10 );
 			repeater.dataset.next = index + 1;
 			rows.insertAdjacentHTML( 'beforeend', template.innerHTML.replace( /__INDEX__/g, index ) );
@@ -22,7 +14,6 @@ export const initRepeaters = ( root = document ) => {
 			if ( first ) {
 				first.focus();
 			}
-			refresh();
 		} );
 
 		// Keep the row heading in sync with the reward title.
@@ -39,10 +30,7 @@ export const initRepeaters = ( root = document ) => {
 			const remove = e.target.closest( '.ddwccf-repeater__remove' );
 			if ( remove ) {
 				remove.closest( '.ddwccf-repeater__row' ).remove();
-				refresh();
 			}
 		} );
-
-		refresh();
 	} );
 };

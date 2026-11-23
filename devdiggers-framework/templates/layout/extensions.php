@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit(); // Exit if accessed directly.
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template scope variables are local include variables.
 $plugins_api      = DDFW_Plugins_API::instance();
+$has_consent      = $plugins_api->has_consent();
 $website_plugins  = $plugins_api->get_website_plugins();
 $featured_plugins = $plugins_api->get_featured_plugins();
 $plugin_stats     = $plugins_api->get_plugin_statistics();
@@ -30,7 +31,7 @@ $svg_tags = ddfw_kses_allowed_svg_tags();
 $stats = [
 	[
 		'label' => esc_html__( 'Total Extensions', 'devdiggers-crowdfunding-for-woocommerce' ),
-		'value' => $plugin_stats['total_plugins'],
+		'value' => $plugin_stats['total_plugins'] ?? 0,
 		'icon'  => '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/>',
 	],
 	[
@@ -92,6 +93,21 @@ $render_card = function ( $plugin ) {
 			</div>
 		</div>
 
+		<?php if ( ! $has_consent ) : ?>
+			<div class="ddfw-dashboard-section ddfw-extensions-consent">
+				<div class="ddfw-section-header">
+					<h2><?php esc_html_e( 'Load the extensions list', 'devdiggers-crowdfunding-for-woocommerce' ); ?></h2>
+					<p><?php esc_html_e( 'The list of extensions is kept on devdiggers.com. Nothing is loaded from there until you choose to.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
+				</div>
+				<p><?php esc_html_e( 'If you load it, your server requests the public list from devdiggers.com and your browser loads each extension\'s image from there. No personal data and no store data are sent, only the standard details of any web request, such as your IP address. The list is cached for a day and you can stop loading it at any time.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
+				<form method="post">
+					<?php wp_nonce_field( 'ddfw_extensions_consent_action', 'ddfw_extensions_nonce' ); ?>
+					<input type="hidden" name="ddfw_extensions_consent" value="yes" />
+					<button type="submit" class="ddfw-button ddfw-button-primary"><?php esc_html_e( 'Load extensions from devdiggers.com', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
+					<a class="ddfw-button ddfw-button-secondary" href="https://devdiggers.com/woocommerce-extensions/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Browse on devdiggers.com instead', 'devdiggers-crowdfunding-for-woocommerce' ); ?></a>
+				</form>
+			</div>
+		<?php else : ?>
 		<div class="ddfw-dashboard-stats">
 			<?php foreach ( $stats as $stat ) : ?>
 				<div class="ddfw-stat-card">
@@ -125,6 +141,16 @@ $render_card = function ( $plugin ) {
 					<?php array_map( $render_card, $other_plugins ); ?>
 				</div>
 			</div>
+		<?php endif; ?>
+
+		<form method="post" class="ddfw-extensions-revoke">
+			<?php wp_nonce_field( 'ddfw_extensions_consent_action', 'ddfw_extensions_nonce' ); ?>
+			<input type="hidden" name="ddfw_extensions_consent" value="no" />
+			<p>
+				<?php esc_html_e( 'This list is loaded from devdiggers.com because you allowed it.', 'devdiggers-crowdfunding-for-woocommerce' ); ?>
+				<button type="submit" class="button-link"><?php esc_html_e( 'Stop loading it', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
+			</p>
+		</form>
 		<?php endif; ?>
 	</div>
 </div>

@@ -201,7 +201,6 @@ if ( ! class_exists( 'DDWCCF_Framework_Configuration_Template' ) ) {
 					__( 'All or nothing funding with one click refunds when a goal is missed', 'devdiggers-crowdfunding-for-woocommerce' ),
 					__( 'Stretch goals marked on the progress bar', 'devdiggers-crowdfunding-for-woocommerce' ),
 					__( 'Campaign updates emailed to every supporter in the background', 'devdiggers-crowdfunding-for-woocommerce' ),
-					__( 'Unlimited reward tiers (Free has three per campaign)', 'devdiggers-crowdfunding-for-woocommerce' ),
 					__( 'Campaign categories and featured campaigns', 'devdiggers-crowdfunding-for-woocommerce' ),
 				]
 			);
@@ -467,13 +466,12 @@ if ( ! class_exists( 'DDWCCF_Framework_Configuration_Template' ) ) {
 		}
 
 		/**
-		 * Emails tab: the Free notifications with their fixed wording, then the Pro ones.
+		 * Emails tab: every notification with its switch and editable wording, then a note on the Pro-only emails.
 		 *
 		 * @return void
 		 */
 		public function emails() {
 			$name     = DDWCCF_Email_Helper::OPTION;
-			$plain    = fn( $html ) => trim( wp_strip_all_tags( $html ) );
 			$sections = [
 				[
 					'after_header_html' => '<div class="ddwccf-help-card"><p>' . sprintf(
@@ -507,32 +505,34 @@ if ( ! class_exists( 'DDWCCF_Framework_Configuration_Template' ) ) {
 							'checkbox_label' => __( 'Send this email', 'devdiggers-crowdfunding-for-woocommerce' ),
 							'value'          => $settings['enabled'],
 						],
-						$this->locked(
-							[
-								'type'  => 'text',
-								'id'    => $id . '-subject',
-								'label' => __( 'Subject', 'devdiggers-crowdfunding-for-woocommerce' ),
-								'value' => $settings['subject'],
-							]
-						),
-						$this->locked(
-							[
-								'type'  => 'text',
-								'id'    => $id . '-heading',
-								'label' => __( 'Heading', 'devdiggers-crowdfunding-for-woocommerce' ),
-								'value' => $settings['heading'],
-							]
-						),
-						$this->locked(
-							[
-								'type'              => 'textarea',
-								'id'                => $id . '-message',
-								'label'             => __( 'Email Message', 'devdiggers-crowdfunding-for-woocommerce' ),
-								'description'       => __( 'Free sends this wording. Pro gives every email a full editor with placeholders.', 'devdiggers-crowdfunding-for-woocommerce' ),
-								'value'             => $plain( $settings['message'] ),
-								'custom_attributes' => [ 'rows' => 6 ],
-							]
-						),
+						[
+							'type'        => 'text',
+							'name'        => $name . '[' . $type . '][subject]',
+							'id'          => 'ddwccf-' . $id . '-subject',
+							'label'       => __( 'Subject', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'placeholder' => $email['subject'],
+							'description' => __( 'The subject line recipients see in their inbox. Placeholders work here too. Leave empty to use the default.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'value'       => $settings['subject'],
+						],
+						[
+							'type'        => 'text',
+							'name'        => $name . '[' . $type . '][heading]',
+							'id'          => 'ddwccf-' . $id . '-heading',
+							'label'       => __( 'Heading', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'placeholder' => $email['heading'],
+							'description' => __( 'The title shown at the top of the email, inside your WooCommerce email header.', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'value'       => $settings['heading'],
+						],
+						[
+							'type'          => 'editor',
+							'name'          => $name . '[' . $type . '][message]',
+							'id'            => 'ddwccf_' . str_replace( '-', '_', $id ) . '_message',
+							'label'         => __( 'Email Message', 'devdiggers-crowdfunding-for-woocommerce' ),
+							'textarea_rows' => 10,
+							'media_buttons' => false,
+							'description'   => __( 'The body of the email. Leave empty to use the default wording.', 'devdiggers-crowdfunding-for-woocommerce' ) . ' ' . DDWCCF_Email_Helper::get_placeholders_help( $type ),
+							'value'         => $settings['message'],
+						],
 					],
 				];
 			}
@@ -544,13 +544,12 @@ if ( ! class_exists( 'DDWCCF_Framework_Configuration_Template' ) ) {
 				],
 				'after_header_html' => $this->upgrade_card(
 					'emails',
-					__( 'Write every email your way with Pro', 'devdiggers-crowdfunding-for-woocommerce' ),
-					__( 'A full editor and placeholders for all ten notifications, including six that only Pro sends.', 'devdiggers-crowdfunding-for-woocommerce' ),
+					__( 'Six more notifications with Pro', 'devdiggers-crowdfunding-for-woocommerce' ),
+					__( 'Pro adds emails for the features only it has: customer campaigns, campaign updates and payouts.', 'devdiggers-crowdfunding-for-woocommerce' ),
 					[
 						__( 'Campaign submitted and campaign approved', 'devdiggers-crowdfunding-for-woocommerce' ),
 						__( 'Campaign updates to every supporter', 'devdiggers-crowdfunding-for-woocommerce' ),
 						__( 'Payout requested, paid and rejected', 'devdiggers-crowdfunding-for-woocommerce' ),
-						__( 'Your own subject, heading and message on every email', 'devdiggers-crowdfunding-for-woocommerce' ),
 					]
 				),
 			];

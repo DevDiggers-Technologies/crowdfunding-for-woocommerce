@@ -21,7 +21,7 @@ You want to raise money for a project, a cause or a product that does not exist 
 
 **DevDiggers Crowdfunding for WooCommerce** turns any campaign into a page on your own store. Set a goal and an end date, add reward tiers, and supporters pay through your normal WooCommerce checkout, so every payment gateway you already use keeps working. The campaign page shows the money raised, a progress bar, a countdown and everyone who backed it.
 
-There is no platform fee, no outside service and no account to create. Contributions are ordinary WooCommerce orders in your own database.
+There is no platform fee and no account to create. Contributions are ordinary WooCommerce orders in your own database, and campaign and supporter data never leave your store.
 
 = Quick links =
 
@@ -40,7 +40,7 @@ There is no platform fee, no outside service and no account to create. Contribut
 
 = How it works =
 
-1. Create a campaign under **Crowdfunding > Campaigns**: a story, a cover image, a goal, an end date and up to three reward tiers.
+1. Create a campaign under **Crowdfunding > Campaigns**: a story, a cover image, a goal, an end date and as many reward tiers as you need.
 2. Put `[ddwccf_campaigns]` on a page, or link straight to the campaign.
 3. Supporters pick a reward, choose an amount and pay through your WooCommerce checkout.
 4. As soon as the order is paid, the contribution counts toward the goal. If the order is cancelled, refunded or fails, it comes off again.
@@ -61,7 +61,7 @@ There is no platform fee, no outside service and no account to create. Contribut
 
 * Fixed contributions, or supporters choose the amount with quick pick buttons such as $10, $25, $50 and $100
 * A minimum per campaign and an optional maximum per contribution
-* Up to three reward tiers per campaign, each with a minimum amount, an optional quantity limit and an estimated delivery date. Limited rewards show how many are left and switch to Sold out on their own.
+* Reward tiers, as many per campaign as you need, each with a minimum amount, an optional quantity limit and an estimated delivery date. Limited rewards show how many are left and switch to Sold out on their own.
 * Anonymous giving that hides the name from the public supporters wall
 * A short public message of support
 * Limit which payment gateways are offered when the cart holds a contribution
@@ -81,7 +81,7 @@ There is no platform fee, no outside service and no account to create. Contribut
 
 === Emails ===
 
-Four notifications, each with its own on and off switch, using your WooCommerce email design:
+Four notifications, each with its own on and off switch and your own subject, heading and message with placeholders such as {campaign_name}, {amount} and {supporter_name}. They use your WooCommerce email design:
 
 * Thank you to the supporter
 * New contribution to the organiser
@@ -114,7 +114,6 @@ The free plugin is a complete way to run your own campaigns. [Pro](https://devdi
 * **All or nothing** campaigns that only release the money when the goal is met, with one click refunds of every supporter when it is missed.
 * **Stretch goals** marked on the progress bar.
 * **Campaign updates** in an Updates tab, emailed to every supporter in the background.
-* **Unlimited** reward tiers.
 
 === Discovery and sharing (Pro) ===
 
@@ -127,7 +126,7 @@ The free plugin is a complete way to run your own campaigns. [Pro](https://devdi
 
 * A Needs Attention list for approvals, payouts and refunds.
 * CSV export of campaigns and contributions.
-* A full editor for all ten email notifications, including campaign submitted, approved, update and payout emails.
+* Six more email notifications for the Pro features: campaign submitted, campaign approved, campaign update and the three payout emails.
 
 == Installation ==
 
@@ -177,7 +176,7 @@ Yes. Choose "Supporters choose the amount" on a campaign and set a minimum. Quic
 
 = How many reward tiers can a campaign have? =
 
-Up to three in the free plugin. Pro has no limit.
+As many as you like. Each tier has a minimum amount, an optional quantity limit and an estimated delivery date.
 
 = Can customers create their own campaigns? =
 
@@ -208,16 +207,16 @@ Yes. Every string is translatable, and a `.pot` file ships in the `i18n` folder.
 
 == External services ==
 
-The plugin itself sends no data to any outside service. Campaigns and contributions are stored in your WordPress database, and notifications go out through the WooCommerce mailer. It contains no licence checks, no update checks and no telemetry.
+Campaigns, contributions and supporter details are stored in your WordPress database, and notifications go out through the WooCommerce mailer. The plugin has no licence checks, no update checks and no tracking. It connects to the outside services below only in the situations described, and none of them receives campaign, order or customer data.
 
 **1. Gravatar (avatar images)**
 
-* What it is: Gravatar, the avatar service operated by Automattic, used through WordPress core's `get_avatar()`.
-* What it is used for: Showing the organiser's avatar on the campaign page. This is standard WordPress behaviour.
-* When data is sent: When a campaign page is viewed and avatars are enabled under **Settings > Discussion**. Turning avatars off there stops the requests.
-* What data is sent: A hash of the organiser's email address inside the image URL, plus the usual request data of the visitor's browser such as IP address and user agent.
-* Terms of Service: https://automattic.com/terms/
-* Privacy Policy: https://automattic.com/privacy/
+* What it is: Gravatar, the avatar service run by Automattic, used through WordPress core's `get_avatar()`.
+* What it is used for: Showing the organiser's avatar on campaign pages, and supporter and user avatars on the admin screens. This is standard WordPress behaviour.
+* When data is sent: When one of those pages is viewed and avatars are turned on under **Settings > Discussion**. Turning avatars off there stops the requests.
+* What data is sent: A hash of the person's email address inside the image URL, plus the usual details of the viewer's browser request, such as IP address and user agent.
+* Terms of Service: https://gravatar.com/tos
+* Privacy Policy: https://gravatar.com/privacy
 
 **2. Share buttons**
 
@@ -228,25 +227,25 @@ The share buttons are plain links. Nothing is loaded from the networks until a v
 * WhatsApp: https://www.whatsapp.com/legal/privacy-policy
 * LinkedIn: https://www.linkedin.com/legal/privacy-policy
 
-The bundled DevDiggers framework, which draws the admin screens, connects to the two services below. Both run only inside the WordPress admin.
+The bundled DevDiggers framework, which draws the admin screens, can connect to the two DevDiggers services below. Both are off until an administrator asks for them, and both run only inside the WordPress admin.
 
-**3. DevDiggers extensions directory**
+**3. DevDiggers extensions list (opt in)**
 
 * What it is: A read only API on devdiggers.com that returns the public list of DevDiggers extensions.
-* What it is used for: Showing available DevDiggers extensions on the Extensions admin page.
-* When data is sent: Only when a logged in administrator opens the Extensions admin page. The response is cached for 24 hours.
-* What data is sent: A standard outbound HTTP request only, meaning your server's IP address and a plugin user agent string. No personal data and no store data are sent. The page also loads each listed extension's image from devdiggers.com in the administrator's browser.
+* What it is used for: Showing the list on the **DevDiggers Plugins > Extensions** admin page.
+* When data is sent: Only after an administrator clicks **Load extensions from devdiggers.com** on that page. Until then the page makes no request and shows a link to the list on devdiggers.com instead. The response is cached for a day, and **Stop loading it** at the bottom of the page turns the requests off again and clears the cache.
+* What data is sent: A standard request from your server, which reveals its IP address and a "DevDiggers Framework" user agent. Once the list is shown, the administrator's browser also loads each extension's image from devdiggers.com. No personal data and no store data are sent.
 * Endpoint: https://devdiggers.com/wp-json/ddwcs/v1/plugins
 
-**4. Newsletter subscription (optional)**
+**4. DevDiggers newsletter (opt in)**
 
 * What it is: A contact and newsletter endpoint on devdiggers.com.
 * What it is used for: Adding your email address to the DevDiggers newsletter, only if you choose to subscribe.
-* When data is sent: Only when an administrator submits the optional newsletter form in the plugin dashboard. Nothing is sent automatically.
+* When data is sent: Only when an administrator types an email address into the newsletter form on the **DevDiggers Plugins > Dashboard** page and clicks Subscribe. Nothing is sent automatically.
 * What data is sent: The email address you enter and your site URL.
 * Endpoint: https://devdiggers.com/?fluentcrm=1&route=contact
 
-The DevDiggers services are provided by DevDiggers. By using them you agree to the DevDiggers Terms and Conditions (https://devdiggers.com/terms-and-conditions/) and Privacy Policy (https://devdiggers.com/privacy-policy/).
+Both DevDiggers services are provided by DevDiggers under its Terms and Conditions (https://devdiggers.com/terms-and-conditions/) and Privacy Policy (https://devdiggers.com/privacy-policy/).
 
 == Source code and build tools ==
 
@@ -259,20 +258,24 @@ To build the assets from source:
 1. Run `npm install` to install the build dependencies listed in `package.json`.
 2. Run `npm run build` to compile the production assets into `assets/js` and `assets/css`.
 
-The build configuration is in `webpack.config.js` and `babel.config.js`. Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
+The build configuration is in `webpack.config.js` and `babel.config.js`.
+
+The admin screens share the bundled DevDiggers Framework. The source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard and review notice) ships in `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
+
+Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 
 == Changelog ==
 
 = 1.0.0 - 2026-10-17 =
 * New: Crowdfunding and donation campaigns with a goal, an end date or both.
 * New: Fixed or "choose your amount" contributions with quick pick amounts.
-* New: Up to three reward tiers per campaign with quantity limits and delivery dates.
+* New: Reward tiers with quantity limits and delivery dates, as many per campaign as you need.
 * New: Option to remove or rename the "No reward" choice.
 * New: Campaign progress card, countdown, Story, Rewards and Supporters tabs.
 * New: Supporters wall with messages and anonymous giving.
 * New: Share buttons and a Backed Campaigns page in My Account.
 * New: Dashboard, Campaigns and Contributions screens and a setup wizard.
-* New: Four email notifications and two shortcodes.
+* New: Four email notifications with editable subject, heading and message, and two shortcodes.
 
 == Upgrade Notice ==
 

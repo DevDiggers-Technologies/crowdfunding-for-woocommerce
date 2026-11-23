@@ -34,6 +34,15 @@ function sanitize_key( $value ) {
 function apply_filters( $hook, $value ) {
 	return $value;
 }
+function __( $text ) {
+	return $text;
+}
+function wp_kses_post( $value ) {
+	return (string) $value;
+}
+function get_option( $name, $fallback = false ) {
+	return $GLOBALS['ddwccf_test_options'][ $name ] ?? $fallback;
+}
 function current_time( $format ) {
 	return 'Y-m-d' === $format ? '2026-10-16' : '2026-10-16 12:00:00';
 }
@@ -61,11 +70,28 @@ assert( ! $helper::is_reward_available( $helper::get_reward( $data, 'r1' ) ) );
 assert( $helper::is_reward_available( $helper::get_reward( $data, 'r2' ) ) );
 assert( null === $helper::get_reward( $data, 'nope' ) );
 
-// Free caps reward tiers at three, but never drops tiers a campaign already has.
+// Reward tiers have no count limit: every valid row is kept, cheapest first.
 $form = 'DDWCCrowdFunding\\Helper\\DDWCCF_Event_Form_Helper';
-$rows = array_map( fn( $i ) => [ 'id' => 'r' . $i, 'title' => 'T' . $i, 'amount' => $i * 10 ], range( 1, 5 ) );
-assert( 3 === count( $form::parse_rewards( $rows ) ) );
-assert( 4 === count( $form::parse_rewards( $rows, array_slice( $rows, 0, 4 ) ) ) );
+$rows = array_map( fn( $i ) => [ 'id' => 'r' . $i, 'title' => 'T' . $i, 'amount' => ( 13 - $i ) * 10 ], range( 1, 12 ) );
+$kept = $form::parse_rewards( $rows );
+assert( 12 === count( $kept ) );
+assert( 10.0 === $kept[0]['amount'] );
+assert( ! method_exists( $form, 'get_max_rewards' ) );
+
+// Emails send the saved wording; an empty field falls back to the default.
+$email = 'DDWCCrowdFunding\\Helper\\DDWCCF_Email_Helper';
+$GLOBALS['ddwccf_test_options'][ $email::OPTION ] = [
+	'goal_reached' => [ 'enabled' => 'yes', 'subject' => 'We did it, {campaign_name}', 'heading' => '', 'message' => 'Custom body' ],
+	'pro_only'     => [ 'enabled' => 'yes', 'subject' => 'Kept' ],
+];
+$settings = $email::get_settings( 'goal_reached' );
+assert( 'We did it, {campaign_name}' === $settings['subject'] );
+assert( 'Custom body' === $settings['message'] );
+assert( 'Goal reached!' === $settings['heading'] );
+$saved = $email::sanitize( [ 'goal_reached' => [ 'enabled' => 'yes', 'subject' => ' New subject ', 'message' => '<p>Hi</p>' ] ] );
+assert( 'New subject' === $saved['goal_reached']['subject'] && '<p>Hi</p>' === $saved['goal_reached']['message'] );
+assert( 'no' === $saved['campaign_ended']['enabled'] );
+assert( 'Kept' === $saved['pro_only']['subject'] );
 
 // Boundary: Pro-only logic must not exist in Free.
 foreach ( [ 'is_failed', 'get_fee', 'get_withdrawal_charges', 'get_cover_fee_rate', 'get_milestones', 'can_request_withdrawal', 'get_backer_emails' ] as $method ) {

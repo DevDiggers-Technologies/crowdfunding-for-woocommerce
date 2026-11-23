@@ -167,7 +167,6 @@ if ( ! class_exists( 'DDFW_Plugin_Dashboard' ) ) {
 				'prefetch'        => true,
 				'transitions'     => false, // View Transitions snapshot the whole admin page (~100 ms); opt in via the ddfw_turbo_config filter.
 				'dirtyGuard'      => true,
-				'licenseInterval' => 30,
 				'i18n'            => [
 					'unsavedChanges' => esc_html__( 'You have unsaved changes. Do you want to leave this page?', 'devdiggers-crowdfunding-for-woocommerce' ),
 					/* translators: %s: screen title. */

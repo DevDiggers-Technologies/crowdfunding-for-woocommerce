@@ -15,15 +15,15 @@ Run crowdfunding and donation campaigns on your own WooCommerce store. Each camp
 ## Features
 
 - **Campaigns:** goal, end date or both, fixed or "choose your amount" contributions with a minimum, cover image and story.
-- **Rewards:** up to three tiers per campaign with a minimum amount, quantity limit and estimated delivery. The cap can be changed with the `ddwccf_max_rewards` filter.
+- **Rewards:** as many tiers per campaign as you need, each with a minimum amount, quantity limit and estimated delivery.
 - **Campaign page:** progress card, funded percentage, supporters, days left, live countdown, organiser, Story/Rewards/Supporters tabs and share buttons.
 - **Giving:** quick pick amounts, maximum contribution, anonymous giving, public messages, gateway restriction, close on goal.
 - **Supporters:** supporters wall and a Backed Campaigns page in My Account.
 - **Admin:** dashboard with KPIs and trend chart, Campaigns and Contributions lists, setup wizard.
-- **Emails:** thank you, new contribution, goal reached and campaign ended, through the WooCommerce mailer.
+- **Emails:** thank you, new contribution, goal reached and campaign ended, each with an editable subject, heading and message, through the WooCommerce mailer.
 - **Shortcodes:** `[ddwccf_campaigns]` and `[ddwccf_campaign id="123"]`.
 
-Pro adds customer campaigns with approval, platform fees and payouts, all or nothing funding with refunds, stretch goals, campaign updates, unlimited rewards, categories, filters, embeds, CSV export and an email editor. See [readme.txt](readme.txt) for the full Free vs Pro list.
+Pro adds customer campaigns with approval, platform fees and payouts, all or nothing funding with refunds, stretch goals, campaign updates, categories, filters, embeds, CSV export and six more emails. See [readme.txt](readme.txt) for the full Free vs Pro list.
 
 ## Setup
 
@@ -36,14 +36,13 @@ Pro adds customer campaigns with approval, platform fees and payouts, all or not
 - Campaign data lives in product meta `_ddwccf_event_data`, with sortable mirrors in `_ddwccf_collected` and `_ddwccf_end_date`.
 - Contributions are counted on `woocommerce_order_status_processing|completed` and reversed on `cancelled|refunded|failed`. Orders are tagged with `_ddwccf_event_order` so lists work before payment, with HPOS.
 - One daily cron (`ddwccf_daily_check`) sends the Campaign Ended email.
-- No REST routes, no custom tables and no outside service calls.
+- No REST routes and no custom tables. The plugin's own code makes no outside calls; the bundled framework's two opt-in DevDiggers connections are listed under External services in readme.txt.
 
 ### Hooks
 
 | Hook | Type | Purpose |
 |---|---|---|
 | `ddwccf_configuration` | filter | Change the loaded settings array |
-| `ddwccf_max_rewards` | filter | Reward tiers per campaign (default 3) |
 | `ddwccf_is_event_closed` | filter | Decide whether a campaign accepts contributions |
 | `ddwccf_campaign_tabs` | filter | Campaign page tabs |
 | `ddwccf_event_data_before_save` | filter | Campaign data before it is saved |

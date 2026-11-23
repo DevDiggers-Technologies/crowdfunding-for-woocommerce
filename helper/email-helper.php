@@ -31,6 +31,7 @@ if ( ! class_exists( 'DDWCCF_Email_Helper' ) ) {
 					'title'       => __( 'Thank You to Supporter', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'description' => __( 'Sent to the supporter when their contribution is paid.', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'recipient'   => 'supporter',
+					'tags'        => [ '{supporter_name}', '{amount}', '{reward}', '{reward_line}' ],
 					'subject'     => __( 'Thank you for backing {campaign_name}', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'heading'     => __( 'Thank you for your support!', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'message'     => __( "Hi {supporter_name},\n\nYour contribution of {amount} to <strong>{campaign_name}</strong> has been received. {reward_line}\n\nThe campaign has now raised {collected_amount}{target_line}. Share it with friends to help it reach its goal: {campaign_url}", 'devdiggers-crowdfunding-for-woocommerce' ),
@@ -39,6 +40,7 @@ if ( ! class_exists( 'DDWCCF_Email_Helper' ) ) {
 					'title'       => __( 'New Contribution to Organiser', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'description' => __( 'Sent to the campaign organiser for every paid contribution.', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'recipient'   => 'creator',
+					'tags'        => [ '{supporter_name}', '{amount}', '{reward}', '{reward_line}', '{message_line}' ],
 					'subject'     => __( 'New contribution to {campaign_name}', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'heading'     => __( 'You received a new contribution', 'devdiggers-crowdfunding-for-woocommerce' ),
 					'message'     => __( "Hi {creator_name},\n\n{supporter_name} contributed {amount} to <strong>{campaign_name}</strong>. {reward_line}\n\n{message_line}\n\nThe campaign has raised {collected_amount}{target_line}.", 'devdiggers-crowdfunding-for-woocommerce' ),
@@ -65,7 +67,21 @@ if ( ! class_exists( 'DDWCCF_Email_Helper' ) ) {
 		}
 
 		/**
-		 * Saved settings of one type merged over its defaults.
+		 * Placeholders available to one email type, as a readable list.
+		 *
+		 * @param string $type Email type.
+		 * @return string
+		 */
+		public static function get_placeholders_help( $type ) {
+			$types = self::get_types();
+			$tags  = array_merge( [ '{campaign_name}', '{campaign_url}', '{creator_name}', '{collected_amount}', '{target_amount}', '{target_line}', '{supporters_count}', '{site_title}' ], $types[ $type ]['tags'] ?? [] );
+
+			/* translators: %s: list of placeholders. */
+			return sprintf( __( 'Available placeholders: %s', 'devdiggers-crowdfunding-for-woocommerce' ), '<strong>' . implode( '</strong>, <strong>', $tags ) . '</strong>' );
+		}
+
+		/**
+		 * Saved settings of one type merged over its defaults. An empty saved field falls back to the default wording.
 		 *
 		 * @param string $type Email type.
 		 * @return array
@@ -77,15 +93,16 @@ if ( ! class_exists( 'DDWCCF_Email_Helper' ) ) {
 				return [];
 			}
 
-			// Free sends fixed wording: only the on/off switch is read from the saved settings.
 			$saved = (array) get_option( self::OPTION, [] );
+			$saved = isset( $saved[ $type ] ) && is_array( $saved[ $type ] ) ? array_intersect_key( $saved[ $type ], array_flip( [ 'enabled', 'subject', 'heading', 'message' ] ) ) : [];
+			$saved = array_filter( $saved, fn( $value ) => is_string( $value ) && '' !== trim( $value ) );
 
-			return array_merge( $types[ $type ], [ 'enabled' => isset( $saved[ $type ]['enabled'] ) && 'no' === $saved[ $type ]['enabled'] ? 'no' : 'yes' ] );
+			return array_merge( $types[ $type ], [ 'enabled' => 'yes' ], $saved );
 		}
 
 		/**
-		 * Sanitize the email settings option. Only the switches are saved; any other
-		 * saved values (for example wording written in Pro) are kept as they are.
+		 * Sanitize the email settings option. Settings of email types this plugin does not
+		 * send (for example ones added by Pro) are kept as they are.
 		 *
 		 * @param mixed $value Submitted value.
 		 * @return array
@@ -94,9 +111,13 @@ if ( ! class_exists( 'DDWCCF_Email_Helper' ) ) {
 			$clean = (array) get_option( self::OPTION, [] );
 
 			foreach ( array_keys( self::get_types() ) as $type ) {
-				$row                       = isset( $value[ $type ] ) && is_array( $value[ $type ] ) ? $value[ $type ] : [];
-				$clean[ $type ]            = isset( $clean[ $type ] ) && is_array( $clean[ $type ] ) ? $clean[ $type ] : [];
-				$clean[ $type ]['enabled'] = isset( $row['enabled'] ) && 'yes' === $row['enabled'] ? 'yes' : 'no';
+				$row            = isset( $value[ $type ] ) && is_array( $value[ $type ] ) ? $value[ $type ] : [];
+				$clean[ $type ] = [
+					'enabled' => isset( $row['enabled'] ) && 'yes' === $row['enabled'] ? 'yes' : 'no',
+					'subject' => sanitize_text_field( $row['subject'] ?? '' ),
+					'heading' => sanitize_text_field( $row['heading'] ?? '' ),
+					'message' => wp_kses_post( $row['message'] ?? '' ),
+				];
 			}
 
 			return $clean;

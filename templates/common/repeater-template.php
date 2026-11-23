@@ -20,10 +20,9 @@ if ( ! class_exists( 'DDWCCF_Repeater_Template' ) ) {
 		 * Reward rows.
 		 *
 		 * @param array $rewards Rewards.
-		 * @param int   $max     Most rows the campaign can have.
 		 * @return string
 		 */
-		public static function rewards( $rewards, $max ) {
+		public static function rewards( $rewards ) {
 			$currency = html_entity_decode( get_woocommerce_currency_symbol() );
 			$row      = function ( $index, $reward ) use ( $currency ) {
 				$name = 'ddwccf_rewards[' . $index . ']';
@@ -63,7 +62,7 @@ if ( ! class_exists( 'DDWCCF_Repeater_Template' ) ) {
 				return ob_get_clean();
 			};
 
-			return self::wrap( 'rewards', array_map( $row, array_keys( $rewards ), $rewards ), $row( '__INDEX__', [] ), __( 'Add reward', 'devdiggers-crowdfunding-for-woocommerce' ), $max );
+			return self::wrap( 'rewards', array_map( $row, array_keys( $rewards ), $rewards ), $row( '__INDEX__', [] ), __( 'Add reward', 'devdiggers-crowdfunding-for-woocommerce' ) );
 		}
 
 		/**
@@ -86,25 +85,17 @@ if ( ! class_exists( 'DDWCCF_Repeater_Template' ) ) {
 		 * @param string[] $rows     Row HTML.
 		 * @param string   $template Blank row HTML.
 		 * @param string   $label    Add button label.
-		 * @param int      $max      Most rows allowed.
 		 * @return string
 		 */
-		protected static function wrap( $key, $rows, $template, $label, $max ) {
+		protected static function wrap( $key, $rows, $template, $label ) {
 			ob_start();
 			?>
-			<div class="ddwccf-repeater" data-repeater="<?php echo esc_attr( $key ); ?>" data-next="<?php echo esc_attr( count( $rows ) ); ?>" data-max="<?php echo esc_attr( $max ); ?>">
+			<div class="ddwccf-repeater" data-repeater="<?php echo esc_attr( $key ); ?>" data-next="<?php echo esc_attr( count( $rows ) ); ?>">
 				<div class="ddwccf-repeater__rows">
 					<?php echo implode( '', $rows ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Rows are escaped when built. ?>
 				</div>
 				<script type="text/html"><?php echo $template; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped when built. ?></script>
 				<button type="button" class="button ddwccf-repeater__add">+ <?php echo esc_html( $label ); ?></button>
-				<p class="ddwccf-repeater__limit">
-					<?php
-					/* translators: %d: number of reward tiers. */
-					echo esc_html( sprintf( __( 'Free campaigns offer up to %d reward tiers.', 'devdiggers-crowdfunding-for-woocommerce' ), $max ) );
-					?>
-					<a href="<?php echo esc_url( \DDWCCrowdFunding\Includes\DDWCCF_Admin_Dashboard::UPGRADE_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get unlimited rewards with Pro', 'devdiggers-crowdfunding-for-woocommerce' ); ?></a>
-				</p>
 			</div>
 			<?php
 			return ob_get_clean();

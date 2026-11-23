@@ -10,7 +10,6 @@
 namespace DDWCCrowdFunding\Templates\Admin\Events;
 
 use DDWCCrowdFunding\Helper\DDWCCF_Event_Helper;
-use DDWCCrowdFunding\Helper\DDWCCF_Event_Form_Helper;
 use DDWCCrowdFunding\Includes\DDWCCF_Admin_Dashboard;
 use DDWCCrowdFunding\Templates\Common\DDWCCF_Repeater_Template;
 use DevDiggers\Framework\Includes\DDFW_Layout;
@@ -159,10 +158,9 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 				[
 					'header'            => [
 						'heading'     => __( 'Rewards', 'devdiggers-crowdfunding-for-woocommerce' ),
-						/* translators: %d: number of reward tiers. */
-						'description' => sprintf( __( 'Optional perks for supporters who give at least a set amount. Limited rewards sell out automatically. Up to %d tiers per campaign.', 'devdiggers-crowdfunding-for-woocommerce' ), DDWCCF_Event_Form_Helper::get_max_rewards() ),
+						'description' => __( 'Optional perks for supporters who give at least a set amount. Add as many tiers as you like. Limited rewards sell out automatically.', 'devdiggers-crowdfunding-for-woocommerce' ),
 					],
-					'after_header_html' => DDWCCF_Repeater_Template::rewards( $data['rewards'], max( DDWCCF_Event_Form_Helper::get_max_rewards(), count( $data['rewards'] ) ) ),
+					'after_header_html' => DDWCCF_Repeater_Template::rewards( $data['rewards'] ),
 				],
 				[
 					'header'            => [
@@ -177,7 +175,6 @@ if ( ! class_exists( 'DDWCCF_Manage_Event_Template' ) ) {
 							__( 'Stretch goals marked on the progress bar and listed on the campaign', 'devdiggers-crowdfunding-for-woocommerce' ),
 							__( 'Updates timeline in an Updates tab on the campaign page', 'devdiggers-crowdfunding-for-woocommerce' ),
 							__( 'Updates emailed to every supporter in the background', 'devdiggers-crowdfunding-for-woocommerce' ),
-							__( 'Unlimited reward tiers', 'devdiggers-crowdfunding-for-woocommerce' ),
 						]
 					),
 				],
