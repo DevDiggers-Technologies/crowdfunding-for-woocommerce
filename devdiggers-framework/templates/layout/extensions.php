@@ -94,18 +94,48 @@ $render_card = function ( $plugin ) {
 		</div>
 
 		<?php if ( ! $has_consent ) : ?>
-			<div class="ddfw-dashboard-section ddfw-extensions-consent">
-				<div class="ddfw-section-header">
-					<h2><?php esc_html_e( 'Load the extensions list', 'devdiggers-crowdfunding-for-woocommerce' ); ?></h2>
-					<p><?php esc_html_e( 'The list of extensions is kept on devdiggers.com. Nothing is loaded from there until you choose to.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
+			<?php
+			$small_svg_open = str_replace( [ 'width="20"', 'height="20"' ], [ 'width="16"', 'height="16"' ], $svg_open );
+			$consent_points = [
+				esc_html__( 'Your server fetches the public list from devdiggers.com and your browser loads its images.', 'devdiggers-crowdfunding-for-woocommerce' ),
+				esc_html__( 'No personal or store data is sent, only the standard details of a web request, such as your IP address.', 'devdiggers-crowdfunding-for-woocommerce' ),
+				esc_html__( 'The list is cached for a day, and you can stop loading it at any time.', 'devdiggers-crowdfunding-for-woocommerce' ),
+			];
+			?>
+			<div class="ddfw-dashboard-section">
+				<div class="ddfw-extensions-consent">
+					<div class="ddfw-extensions-consent-main">
+						<div class="ddfw-stat-icon"><?php echo wp_kses( $svg_open . '<path d="M12 13v8"/><path d="m8 17 4 4 4-4"/><path d="M20 16.6A5 5 0 0 0 18 7h-1.3A8 8 0 1 0 4 15.3"/></svg>', $svg_tags ); ?></div>
+						<div class="ddfw-extensions-consent-text">
+							<h2><?php esc_html_e( 'Browse DevDiggers extensions here', 'devdiggers-crowdfunding-for-woocommerce' ); ?></h2>
+							<p><?php esc_html_e( 'The list lives on devdiggers.com, so nothing is loaded from there until you choose to.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
+							<ul class="ddfw-extensions-consent-points">
+								<?php foreach ( $consent_points as $consent_point ) : ?>
+									<li><?php echo wp_kses( $small_svg_open . '<path d="M20 6 9 17l-5-5"/></svg>', $svg_tags ); ?><span><?php echo esc_html( $consent_point ); ?></span></li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+					</div>
+					<form method="post" class="ddfw-extensions-consent-actions">
+						<?php wp_nonce_field( 'ddfw_extensions_consent_action', 'ddfw_extensions_nonce' ); ?>
+						<input type="hidden" name="ddfw_extensions_consent" value="yes" />
+						<button type="submit" class="ddfw-button ddfw-button-primary"><?php esc_html_e( 'Load extensions', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
+						<a class="ddfw-button ddfw-button-secondary" href="https://devdiggers.com/woocommerce-extensions/" target="_blank" rel="noopener noreferrer">
+							<?php esc_html_e( 'Browse on devdiggers.com', 'devdiggers-crowdfunding-for-woocommerce' ); ?>
+							<?php echo wp_kses( $small_svg_open . '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>', $svg_tags ); ?>
+						</a>
+					</form>
 				</div>
-				<p><?php esc_html_e( 'If you load it, your server requests the public list from devdiggers.com and your browser loads each extension\'s image from there. No personal data and no store data are sent, only the standard details of any web request, such as your IP address. The list is cached for a day and you can stop loading it at any time.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></p>
-				<form method="post">
-					<?php wp_nonce_field( 'ddfw_extensions_consent_action', 'ddfw_extensions_nonce' ); ?>
-					<input type="hidden" name="ddfw_extensions_consent" value="yes" />
-					<button type="submit" class="ddfw-button ddfw-button-primary"><?php esc_html_e( 'Load extensions from devdiggers.com', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
-					<a class="ddfw-button ddfw-button-secondary" href="https://devdiggers.com/woocommerce-extensions/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Browse on devdiggers.com instead', 'devdiggers-crowdfunding-for-woocommerce' ); ?></a>
-				</form>
+
+				<div class="ddfw-plugins-grid ddfw-extensions-skeleton" aria-hidden="true">
+					<?php for ( $skeleton = 0; $skeleton < 4; $skeleton++ ) : ?>
+						<div class="ddfw-plugin-card">
+							<span class="ddfw-skeleton-image"></span>
+							<span class="ddfw-skeleton-line"></span>
+							<span class="ddfw-skeleton-line ddfw-skeleton-line-short"></span>
+						</div>
+					<?php endfor; ?>
+				</div>
 			</div>
 		<?php else : ?>
 		<div class="ddfw-dashboard-stats">
@@ -146,10 +176,9 @@ $render_card = function ( $plugin ) {
 		<form method="post" class="ddfw-extensions-revoke">
 			<?php wp_nonce_field( 'ddfw_extensions_consent_action', 'ddfw_extensions_nonce' ); ?>
 			<input type="hidden" name="ddfw_extensions_consent" value="no" />
-			<p>
-				<?php esc_html_e( 'This list is loaded from devdiggers.com because you allowed it.', 'devdiggers-crowdfunding-for-woocommerce' ); ?>
-				<button type="submit" class="button-link"><?php esc_html_e( 'Stop loading it', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
-			</p>
+			<?php echo wp_kses( str_replace( [ 'width="20"', 'height="20"' ], [ 'width="16"', 'height="16"' ], $svg_open ) . '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>', $svg_tags ); ?>
+			<span><?php esc_html_e( 'This list is loaded from devdiggers.com because you allowed it.', 'devdiggers-crowdfunding-for-woocommerce' ); ?></span>
+			<button type="submit"><?php esc_html_e( 'Stop loading it', 'devdiggers-crowdfunding-for-woocommerce' ); ?></button>
 		</form>
 		<?php endif; ?>
 	</div>
