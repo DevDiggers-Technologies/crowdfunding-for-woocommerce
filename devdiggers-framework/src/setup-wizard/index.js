@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Finish is handled on click like Continue. As a plain submit, the browser validated
-                // every step's fields, and a hidden required one on another step blocked it silently.
+                // every step's fields, and a hidden required one (the license key) blocked it silently.
                 const finishBtn = e.target.closest('.ddfw-setup-wizard-finish');
                 if (finishBtn) {
                     e.preventDefault();

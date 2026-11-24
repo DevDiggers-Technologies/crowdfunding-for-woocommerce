@@ -54,6 +54,9 @@ if ( ! class_exists( 'DDWCCF_File_Handler' ) ) {
 			}
 
 			new Common\DDWCCF_Common_Hooks( $this->ddwccf_configuration );
+
+			// AI assistants (MCP) through the DevDiggers AI & MCP hub.
+			new Integrations\DDWCCF_MCP_Integration( $this->ddwccf_configuration );
 		}
 
 		/**

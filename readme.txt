@@ -9,7 +9,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,16 @@ Four notifications, each with its own on and off switch and your own subject, he
 
 * `[ddwccf_campaigns]` shows a grid of campaign cards, with options for columns, limit, order, status, pagination and hand picked IDs
 * `[ddwccf_campaign id="123"]` shows the card of one campaign
+
+=== AI assistants (MCP) ===
+
+Ask Claude, ChatGPT, Cursor, VS Code or any MCP client about your campaigns in plain words: "How is my crowdfunding doing this month?", "Which campaigns will miss their goal?", "Who backed this campaign?"
+
+* Tools for an overview, campaigns with their progress (raised against goal, backers, days left), one campaign with its reward tiers, the backers of a campaign and the campaigns ending soon with their pace
+* A Campaign performance review prompt
+* Optional: let the assistant extend a campaign's end date or enable or disable a campaign, logged under WooCommerce > Status > Logs
+* Store managers only, managed in DevDiggers Plugins > AI & MCP with an on and off switch per plugin and per write tool (write tools start off)
+* Needs WordPress 6.9 or later and the MCP Adapter, which WooCommerce 10.3 and later bundles. Developers can change the tools with the `ddwccf_mcp_abilities` filter.
 
 = Free vs Pro =
 
@@ -260,11 +270,17 @@ To build the assets from source:
 
 The build configuration is in `webpack.config.js` and `babel.config.js`.
 
-The admin screens share the bundled DevDiggers Framework. The source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard and review notice) ships in `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
+The admin screens share the bundled DevDiggers Framework. The source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard, review notice and the AI & MCP page) ships in `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
 
 Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 
 == Changelog ==
+
+= 1.1.0 - 2026-11-24 =
+* New: AI assistants (MCP). Ask Claude, ChatGPT, Cursor, VS Code or any MCP client about your campaigns: an overview, progress against goal, reward tiers, backers and campaigns ending soon, plus a Campaign performance review prompt.
+* New: Optional AI tools to extend a campaign's end date or enable or disable a campaign. They stay off until you allow them.
+* New: DevDiggers Plugins > AI & MCP page. Connect Claude, ChatGPT, Claude Code, Codex, Cursor, VS Code or any MCP client by signing in and clicking Allow, with an on and off switch per plugin and per write tool, a Try panel and an activity log.
+* Improved: Updated the DevDiggers framework to 1.3.0. The title bar with Save stays visible on edit screens while you scroll on desktop, and admin charts and pickers keep working when a theme or plugin replaces the shared Select2 script.
 
 = 1.0.0 - 2026-10-17 =
 * New: Crowdfunding and donation campaigns with a goal, an end date or both.
@@ -278,6 +294,9 @@ Two third party libraries used by the admin screens ship unmodified under the MI
 * New: Four email notifications with editable subject, heading and message, and two shortcodes.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds AI assistant (MCP) tools for your campaigns and the DevDiggers AI & MCP page.
 
 = 1.0.0 =
 First release.

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Requires** | WordPress 6.5+, WooCommerce 9.0+, PHP 7.4+ |
 | **Tested up to** | WordPress 7.1, WooCommerce 11.2 |
 | **License** | GPLv3 or later |
@@ -23,6 +23,17 @@ Run crowdfunding and donation campaigns on your own WooCommerce store. Each camp
 - **Emails:** thank you, new contribution, goal reached and campaign ended, each with an editable subject, heading and message, through the WooCommerce mailer.
 - **Shortcodes:** `[ddwccf_campaigns]` and `[ddwccf_campaign id="123"]`.
 
+### AI assistants (MCP)
+
+Ask Claude, ChatGPT, Cursor, VS Code or any MCP client about your campaigns in plain words: "How is my crowdfunding doing this month?", "Which campaigns will miss their goal?", "Who backed the Library Books Drive?"
+
+- Tools for an overview (raised, contributions, supporters, success rate against the previous period), campaigns with their progress (raised against goal, backers, days left), one campaign with its reward tiers, the backers of a campaign and the campaigns ending soon with their pace
+- A Campaign performance review prompt
+- Optional: let the assistant extend a campaign's end date or enable / disable a campaign, logged under WooCommerce > Status > Logs
+- Same access as the Crowdfunding screens: store managers only
+- Managed in DevDiggers Plugins > AI & MCP: one MCP server for every DevDiggers plugin, an on / off switch per plugin and per write tool (write tools start off), a Try panel and an activity log
+- Needs WordPress 6.9+ (Abilities API) and the MCP Adapter, which WooCommerce 10.3+ bundles
+
 Pro adds customer campaigns with approval, platform fees and payouts, all or nothing funding with refunds, stretch goals, campaign updates, categories, filters, embeds, CSV export and six more emails. See [readme.txt](readme.txt) for the full Free vs Pro list.
 
 ## Setup
@@ -36,6 +47,7 @@ Pro adds customer campaigns with approval, platform fees and payouts, all or not
 - Campaign data lives in product meta `_ddwccf_event_data`, with sortable mirrors in `_ddwccf_collected` and `_ddwccf_end_date`.
 - Contributions are counted on `woocommerce_order_status_processing|completed` and reversed on `cancelled|refunded|failed`. Orders are tagged with `_ddwccf_event_order` so lists work before payment, with HPOS.
 - One daily cron (`ddwccf_daily_check`) sends the Campaign Ended email.
+- MCP abilities live in `includes/integrations/mcp-integration.php` under the `crowdfunding/` namespace. Add, change or remove one with the `ddwccf_mcp_abilities` filter.
 - No REST routes and no custom tables. The plugin's own code makes no outside calls; the bundled framework's two opt-in DevDiggers connections are listed under External services in readme.txt.
 
 ### Hooks
@@ -46,6 +58,7 @@ Pro adds customer campaigns with approval, platform fees and payouts, all or not
 | `ddwccf_is_event_closed` | filter | Decide whether a campaign accepts contributions |
 | `ddwccf_campaign_tabs` | filter | Campaign page tabs |
 | `ddwccf_event_data_before_save` | filter | Campaign data before it is saved |
+| `ddwccf_mcp_abilities` | filter | Add, change or remove the AI assistant (MCP) tools |
 | `ddwccf_event_saved` | action | After a campaign is saved |
 | `ddwccf_contribution_counted` | action | A paid contribution was counted |
 | `ddwccf_event_goal_reached` | action | A campaign reached its goal |
