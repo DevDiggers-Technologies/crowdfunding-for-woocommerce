@@ -21,10 +21,11 @@ if ( ! class_exists( 'DDWCCF_Dashboard_Helper' ) ) {
 		/**
 		 * Build all dashboard data.
 		 *
+		 * @param array|null $range Range ( from, to ), or null for the dashboard's date filter.
 		 * @return array
 		 */
-		public function get_dashboard_data() {
-			$range    = DDFW_Dashboard_Data::get_date_range();
+		public function get_dashboard_data( $range = null ) {
+			$range    = $range ? $range : DDFW_Dashboard_Data::get_date_range();
 			$previous = $this->get_previous_range( $range );
 			$current  = $this->get_order_stats( $range['from'], $range['to'] );
 			$before   = $this->get_order_stats( $previous['from'], $previous['to'] );

@@ -15,6 +15,7 @@ const defaults = {
 	prefetch: true,
 	transitions: true,
 	dirtyGuard: true,
+	licenseInterval: 30,
 	i18n: {},
 };
 
