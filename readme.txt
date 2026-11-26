@@ -1,25 +1,25 @@
-=== DevDiggers Crowdfunding for WooCommerce ===
+=== Crowdfunding for WooCommerce – Fundraising Campaigns, Reward Tiers & Donations ===
 Contributors: devdiggers
-Plugin URI: https://github.com/DevDiggers-Technologies/crowdfunding-for-woocommerce
+Plugin URI: https://devdiggers.com/product/woocommerce-crowdfunding/
 Author: DevDiggers
 Author URI: https://devdiggers.com/
-Tags: crowdfunding, fundraising, donation, kickstarter, backer
+Tags: crowdfunding, fundraising, donation, kickstarter, woocommerce crowdfunding
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
-WC tested up to: 11.2
+WC tested up to: 11.3
 Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Kickstarter style crowdfunding and donation campaigns for WooCommerce, with goals, reward tiers, a live progress bar and a backer wall.
+Run crowdfunding and fundraising campaigns in WooCommerce: goals, reward tiers, a progress bar, countdown and a backer wall, Kickstarter style.
 
 == Description ==
 
 You want to raise money for a project, a cause or a product that does not exist yet. A donation button does not show how close you are, and a separate fundraising platform takes a cut and sends your supporters somewhere else.
 
-**DevDiggers Crowdfunding for WooCommerce** turns any campaign into a page on your own store. Set a goal and an end date, add reward tiers, and supporters pay through your normal WooCommerce checkout, so every payment gateway you already use keeps working. The campaign page shows the money raised, a progress bar, a countdown and everyone who backed it.
+**Crowdfunding for WooCommerce** is a free **[WooCommerce crowdfunding plugin](https://devdiggers.com/product/woocommerce-crowdfunding/)** that turns any campaign into a page on your own store. Set a goal and an end date, add reward tiers, and supporters pay through your normal WooCommerce checkout, so every payment gateway you already use keeps working. The campaign page shows the money raised, a progress bar, a countdown and everyone who backed it.
 
 There is no platform fee and no account to create. Contributions are ordinary WooCommerce orders in your own database, and campaign and supporter data never leave your store.
 
@@ -28,7 +28,9 @@ There is no platform fee and no account to create. Contributions are ordinary Wo
 * [Documentation](https://docs.devdiggers.com/woocommerce-crowdfunding/)
 * [Support](https://wordpress.org/support/plugin/devdiggers-crowdfunding-for-woocommerce/)
 * [Source code on GitHub](https://github.com/DevDiggers-Technologies/crowdfunding-for-woocommerce)
+* [Free Demo](https://demo.devdiggers.com/crowdfunding-for-woocommerce/)
 * [Pro Demo](https://demo.devdiggers.com/woocommerce-crowdfunding/)
+* [Free vs Pro Comparison](https://devdiggers.com/product/woocommerce-crowdfunding/#free-vs-pro)
 * [Upgrade to Pro](https://devdiggers.com/product/woocommerce-crowdfunding/)
 
 = Who it is for =
@@ -143,7 +145,7 @@ The free plugin is a complete way to run your own campaigns. [Pro](https://devdi
 = Automatic installation =
 
 1. In your WordPress admin, go to **Plugins > Add New**.
-2. Search for "DevDiggers Crowdfunding for WooCommerce".
+2. Search for "Crowdfunding for WooCommerce".
 3. Click **Install Now**, then **Activate**.
 
 = Manual installation =
@@ -200,20 +202,25 @@ Yes. It works with the classic and block checkout and with WooCommerce High Perf
 
 Yes. Pro uses the same campaigns, contributions and settings, so nothing has to be set up again.
 
+= Do I need a Kickstarter, GoFundMe or PayPal account? =
+
+No. Campaigns live on your own WooCommerce store and are paid through the gateways you already use, so there is no platform fee and nothing to sign up for. Unlike Kickstarter, the free plugin does not hold money back until a goal is met. That all or nothing mode is part of Pro.
+
 = Can I translate the plugin? =
 
 Yes. Every string is translatable, and a `.pot` file ships in the `i18n` folder.
 
 == Screenshots ==
 
-1. Campaign page with progress, countdown, rewards and share buttons.
-2. Contribution form with reward picker and quick amounts.
-3. Supporters wall with messages.
-4. Admin dashboard with KPIs and the contributions trend.
-5. Campaigns list with progress and status.
-6. Campaign editor with funding and reward tiers.
-7. Contributions list with order status and counted badges.
-8. Backed Campaigns in My Account.
+1. Campaign page with a progress bar, countdown and reward tiers.
+2. Dashboard with amount raised, contributions, supporters, success rate and a daily trend.
+3. Contribution form with reward tiers, quick pick amounts and a message.
+4. Supporters wall listing backers, amounts and messages.
+5. Campaigns list with raised amount, supporters, end date and status.
+6. Contributions list with supporter, campaign, amount and reward.
+7. Contribution settings for button label, preset amounts and gateways.
+8. Display settings for countdown, supporters wall and campaign tabs.
+9. Setup wizard that sets the defaults in a few steps.
 
 == External services ==
 
@@ -270,7 +277,7 @@ To build the assets from source:
 
 The build configuration is in `webpack.config.js` and `babel.config.js`.
 
-The admin screens share the bundled DevDiggers Framework. The source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard, review notice and the AI & MCP page) ships in `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
+The admin screens share the bundled DevDiggers Framework. The human readable source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard, review notice and the AI & MCP page) is in the same GitHub repository under `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, clone the repository, then run `npm install` and `npm run build` inside the `devdiggers-framework` folder.
 
 Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 

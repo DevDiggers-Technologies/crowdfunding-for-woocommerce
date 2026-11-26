@@ -25,3 +25,7 @@ Thumbs.db
 __MACOSX
 graphify-out
 .graphifyignore
+screenshots-review
+
+# Framework source lives in the GitHub repository, not in the zip.
+devdiggers-framework/src
