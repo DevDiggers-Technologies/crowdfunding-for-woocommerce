@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Version** | 1.1.0 |
-| **Requires** | WordPress 6.5+, WooCommerce 9.0+, PHP 7.4+ |
+| **Requires** | WordPress 6.9+, WooCommerce 9.0+, PHP 7.4+ |
 | **Tested up to** | WordPress 7.1, WooCommerce 11.3 |
 | **License** | GPLv3 or later |
 | **Text domain** | `devdiggers-crowdfunding-for-woocommerce` |
