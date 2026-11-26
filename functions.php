@@ -11,7 +11,7 @@
  * Requires at least: 6.5
  * Requires PHP: 7.4
  * WC requires at least: 9.0
- * WC tested up to: 11.2
+ * WC tested up to: 11.3
  * DevDiggersPrefix: ddwccf
  * Requires Plugins: woocommerce
  * License: GPLv3 or later

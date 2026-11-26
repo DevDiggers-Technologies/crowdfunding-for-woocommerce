@@ -1,12 +1,14 @@
-# DevDiggers Crowdfunding for WooCommerce
+# Crowdfunding for WooCommerce – Fundraising Campaigns, Reward Tiers & Donations
 
 | | |
 |---|---|
 | **Version** | 1.1.0 |
 | **Requires** | WordPress 6.5+, WooCommerce 9.0+, PHP 7.4+ |
-| **Tested up to** | WordPress 7.1, WooCommerce 11.2 |
+| **Tested up to** | WordPress 7.1, WooCommerce 11.3 |
 | **License** | GPLv3 or later |
 | **Text domain** | `devdiggers-crowdfunding-for-woocommerce` |
+
+**Free Demo:** https://demo.devdiggers.com/crowdfunding-for-woocommerce/
 
 **Pro Demo:** https://demo.devdiggers.com/woocommerce-crowdfunding/
 
@@ -82,4 +84,4 @@ npm run build:release                           # zip from .distignore
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md).
+See the Changelog section in [readme.txt](readme.txt).
